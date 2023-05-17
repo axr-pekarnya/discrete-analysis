@@ -1,30 +1,63 @@
+#include <fstream>
 #include <iostream>
+#include <sstream>
 
 #include "LFunction.hpp"
 #include "NFunction.hpp"
-#include "PrefixFunction.hpp"
+#include "ZFunction.hpp"
+#include "GoodSuffix.hpp"
+#include "SymbolTable.hpp"
 
-template<typename T>
-std::vector<T> LLittleFunction(const std::string &s, std::vector<T> &v) {
-    if (s.size() == 0) {
-        return v;
-    }
-    //std::cout << s.size() << "\n";
-    std::vector<T> l(s.size());
-    for (int i = s.size() - 1; i >= 0; i--) {
-        int j = (s.size() - 1) - i;
-        if (v[j] == j + 1) {
-            l[i] = j + 1;
-        } else {
-            if (i == (int)s.size() - 1) {
-                l[i] = 0;
-            } else {
-                l[i] = l[i + 1];
-            }
-        }
-    }
+using pii = std::pair<int, int>;
+
+std::vector<uint> ParseLine(bool parseOne, std::map<int, pii> &positions)
+{
+    std::vector<uint> result;
+
+    int numOfLine = 1, pos = 0;
+    uint num;
+    std::string line;
+    std::stringstream lineStrm;
     
-    return l;
+    while (std::getline(std::cin, line))
+    {
+        int posInLine = 1;
+
+        lineStrm.clear();
+        lineStrm << line;
+
+        while (lineStrm >> num)
+        {
+            result.push_back(num);
+
+            if (!parseOne){
+                if (posInLine) {
+                    positions.insert({pos, {numOfLine, posInLine}});
+                }
+            }
+
+            ++posInLine;
+            ++pos;
+        }
+
+        if (parseOne){
+            break;
+        }
+
+        ++numOfLine;
+    }
+
+    return result;
+}
+
+std::ostream& operator<<(std::ostream &os, const std::vector<int> &vec)
+{
+    for (int elem : vec){
+        os << elem << ' ';
+    }
+    os << '\n';
+
+    return os;
 }
 
 int main()
@@ -33,34 +66,45 @@ int main()
     std::cin.tie(nullptr);
     std::cout.tie(nullptr);
 
-    int num;
-    std::string pattern;
-    std::string text;
+    std::map<int, pii> positions;
+    std::vector<uint> pattern = ParseLine(1, positions);
+    std::vector<uint> text = ParseLine(0, positions);
 
-    std::getline(std::cin, pattern);
+    std::vector<int> zFunction = ZFunction(pattern);
+    std::vector<int> nFunction = NFunction(pattern);
+    std::vector<int> lFunction = LFunction(nFunction);
 
-    while (std::cin >> num) {
-        text += std::to_string(num) + ' ';
-    }
+    TSymbolTable symbolTable(pattern);
+    TGoodSuffix goodSuffix(lFunction);
 
-    std::vector<int> L = LFunction(pattern);
-    std::vector<int> N = NFunction(pattern);
-    std::vector<int> prefixFunction = PrefixFunction(pattern);
+    for (uint k = pattern.size() - 1; k < text.size();) 
+    {
+		int i = (int)k;
+		bool found = true;
 
-    std::vector<int> test = LLittleFunction(pattern, N);
+		for (int j = pattern.size() - 1; j >= 0; --j) 
+        {
+			if (text[i] != pattern[j]) 
+            {
+				int shiftSize = std::max((int)symbolTable.Get(text[i], j), (int)goodSuffix.Get(j + 1));
 
-    for (int elem : prefixFunction){
-        std::cout << elem << ' ';
-    }
+				k += shiftSize;
+				found = false;
+				break;
+			}
 
-    std::cout << '\n';
+			--i;
+		}
+		
+        if (found) 
+        {
+            std::map<int, pii>::iterator it = positions.find(k - pattern.size() + 1);
 
-    for (int elem : test){
-        std::cout << elem << ' ';
-    }
-
-    std::cout << '\n';
-  
-
+            std::cout << it->second.first << ", " << it->second.second << '\n';
+		
+            k += pattern.size() - goodSuffix.GetPrefixSize();
+        }
+	}
+    
     return 0;
 }

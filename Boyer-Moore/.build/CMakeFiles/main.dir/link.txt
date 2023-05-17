@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/src/ZFunction.cpp.o CMakeFiles/main.dir/src/NFunction.cpp.o CMakeFiles/main.dir/src/LFunction.cpp.o CMakeFiles/main.dir/src/PrefixFunction.cpp.o -o main 
+/usr/bin/c++ CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/src/ZFunction.cpp.o CMakeFiles/main.dir/src/NFunction.cpp.o CMakeFiles/main.dir/src/LFunction.cpp.o CMakeFiles/main.dir/src/LsFunction.cpp.o CMakeFiles/main.dir/src/GoodSuffix.cpp.o CMakeFiles/main.dir/src/SymbolTable.cpp.o -o main 

@@ -1,6 +1,8 @@
 CMakeFiles/main.dir/main.cpp.o: \
  /home/axr/prog/discrete-analysis/Boyer-Moore/main.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/12.2.1/iostream \
+ /usr/include/stdc-predef.h /usr/include/c++/12.2.1/fstream \
+ /usr/include/c++/12.2.1/istream /usr/include/c++/12.2.1/ios \
+ /usr/include/c++/12.2.1/iosfwd \
  /usr/include/c++/12.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/12.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -9,8 +11,7 @@ CMakeFiles/main.dir/main.cpp.o: \
  /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
  /usr/include/c++/12.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
  /usr/include/c++/12.2.1/pstl/pstl_config.h \
- /usr/include/c++/12.2.1/ostream /usr/include/c++/12.2.1/ios \
- /usr/include/c++/12.2.1/iosfwd /usr/include/c++/12.2.1/bits/stringfwd.h \
+ /usr/include/c++/12.2.1/bits/stringfwd.h \
  /usr/include/c++/12.2.1/bits/memoryfwd.h \
  /usr/include/c++/12.2.1/bits/postypes.h /usr/include/c++/12.2.1/cwchar \
  /usr/include/wchar.h /usr/include/bits/libc-header-start.h \
@@ -130,8 +131,14 @@ CMakeFiles/main.dir/main.cpp.o: \
  /usr/include/c++/12.2.1/x86_64-pc-linux-gnu/bits/ctype_inline.h \
  /usr/include/c++/12.2.1/bits/locale_facets.tcc \
  /usr/include/c++/12.2.1/bits/basic_ios.tcc \
- /usr/include/c++/12.2.1/bits/ostream.tcc /usr/include/c++/12.2.1/istream \
+ /usr/include/c++/12.2.1/ostream /usr/include/c++/12.2.1/bits/ostream.tcc \
  /usr/include/c++/12.2.1/bits/istream.tcc \
+ /usr/include/c++/12.2.1/bits/codecvt.h \
+ /usr/include/c++/12.2.1/x86_64-pc-linux-gnu/bits/basic_file.h \
+ /usr/include/c++/12.2.1/x86_64-pc-linux-gnu/bits/c++io.h \
+ /usr/include/c++/12.2.1/bits/fstream.tcc \
+ /usr/include/c++/12.2.1/iostream /usr/include/c++/12.2.1/sstream \
+ /usr/include/c++/12.2.1/bits/sstream.tcc \
  /home/axr/prog/discrete-analysis/Boyer-Moore/include/LFunction.hpp \
  /home/axr/prog/discrete-analysis/Boyer-Moore/include/NFunction.hpp \
  /home/axr/prog/discrete-analysis/Boyer-Moore/include/ZFunction.hpp \
@@ -149,4 +156,15 @@ CMakeFiles/main.dir/main.cpp.o: \
  /usr/include/c++/12.2.1/pstl/glue_algorithm_defs.h \
  /usr/include/c++/12.2.1/pstl/execution_defs.h \
  /home/axr/prog/discrete-analysis/Boyer-Moore/include/NFunction.hpp \
- /home/axr/prog/discrete-analysis/Boyer-Moore/include/PrefixFunction.hpp
+ /home/axr/prog/discrete-analysis/Boyer-Moore/include/LsFunction.hpp \
+ /home/axr/prog/discrete-analysis/Boyer-Moore/include/ZFunction.hpp \
+ /home/axr/prog/discrete-analysis/Boyer-Moore/include/GoodSuffix.hpp \
+ /home/axr/prog/discrete-analysis/Boyer-Moore/include/LFunction.hpp \
+ /home/axr/prog/discrete-analysis/Boyer-Moore/include/SymbolTable.hpp \
+ /usr/include/c++/12.2.1/map /usr/include/c++/12.2.1/bits/stl_tree.h \
+ /usr/include/c++/12.2.1/ext/aligned_buffer.h \
+ /usr/include/c++/12.2.1/bits/node_handle.h \
+ /usr/include/c++/12.2.1/bits/stl_map.h /usr/include/c++/12.2.1/tuple \
+ /usr/include/c++/12.2.1/bits/uses_allocator.h \
+ /usr/include/c++/12.2.1/bits/stl_multimap.h \
+ /usr/include/c++/12.2.1/bits/erase_if.h

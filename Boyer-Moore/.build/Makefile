@@ -163,6 +163,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/GoodSuffix.o: src/GoodSuffix.cpp.o
+.PHONY : src/GoodSuffix.o
+
+# target to build an object file
+src/GoodSuffix.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/GoodSuffix.cpp.o
+.PHONY : src/GoodSuffix.cpp.o
+
+src/GoodSuffix.i: src/GoodSuffix.cpp.i
+.PHONY : src/GoodSuffix.i
+
+# target to preprocess a source file
+src/GoodSuffix.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/GoodSuffix.cpp.i
+.PHONY : src/GoodSuffix.cpp.i
+
+src/GoodSuffix.s: src/GoodSuffix.cpp.s
+.PHONY : src/GoodSuffix.s
+
+# target to generate assembly for a file
+src/GoodSuffix.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/GoodSuffix.cpp.s
+.PHONY : src/GoodSuffix.cpp.s
+
 src/LFunction.o: src/LFunction.cpp.o
 .PHONY : src/LFunction.o
 
@@ -186,6 +210,30 @@ src/LFunction.s: src/LFunction.cpp.s
 src/LFunction.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/LFunction.cpp.s
 .PHONY : src/LFunction.cpp.s
+
+src/LsFunction.o: src/LsFunction.cpp.o
+.PHONY : src/LsFunction.o
+
+# target to build an object file
+src/LsFunction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/LsFunction.cpp.o
+.PHONY : src/LsFunction.cpp.o
+
+src/LsFunction.i: src/LsFunction.cpp.i
+.PHONY : src/LsFunction.i
+
+# target to preprocess a source file
+src/LsFunction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/LsFunction.cpp.i
+.PHONY : src/LsFunction.cpp.i
+
+src/LsFunction.s: src/LsFunction.cpp.s
+.PHONY : src/LsFunction.s
+
+# target to generate assembly for a file
+src/LsFunction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/LsFunction.cpp.s
+.PHONY : src/LsFunction.cpp.s
 
 src/NFunction.o: src/NFunction.cpp.o
 .PHONY : src/NFunction.o
@@ -211,29 +259,29 @@ src/NFunction.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/NFunction.cpp.s
 .PHONY : src/NFunction.cpp.s
 
-src/PrefixFunction.o: src/PrefixFunction.cpp.o
-.PHONY : src/PrefixFunction.o
+src/SymbolTable.o: src/SymbolTable.cpp.o
+.PHONY : src/SymbolTable.o
 
 # target to build an object file
-src/PrefixFunction.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/PrefixFunction.cpp.o
-.PHONY : src/PrefixFunction.cpp.o
+src/SymbolTable.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/SymbolTable.cpp.o
+.PHONY : src/SymbolTable.cpp.o
 
-src/PrefixFunction.i: src/PrefixFunction.cpp.i
-.PHONY : src/PrefixFunction.i
+src/SymbolTable.i: src/SymbolTable.cpp.i
+.PHONY : src/SymbolTable.i
 
 # target to preprocess a source file
-src/PrefixFunction.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/PrefixFunction.cpp.i
-.PHONY : src/PrefixFunction.cpp.i
+src/SymbolTable.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/SymbolTable.cpp.i
+.PHONY : src/SymbolTable.cpp.i
 
-src/PrefixFunction.s: src/PrefixFunction.cpp.s
-.PHONY : src/PrefixFunction.s
+src/SymbolTable.s: src/SymbolTable.cpp.s
+.PHONY : src/SymbolTable.s
 
 # target to generate assembly for a file
-src/PrefixFunction.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/PrefixFunction.cpp.s
-.PHONY : src/PrefixFunction.cpp.s
+src/SymbolTable.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/SymbolTable.cpp.s
+.PHONY : src/SymbolTable.cpp.s
 
 src/ZFunction.o: src/ZFunction.cpp.o
 .PHONY : src/ZFunction.o
@@ -272,15 +320,21 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/GoodSuffix.o"
+	@echo "... src/GoodSuffix.i"
+	@echo "... src/GoodSuffix.s"
 	@echo "... src/LFunction.o"
 	@echo "... src/LFunction.i"
 	@echo "... src/LFunction.s"
+	@echo "... src/LsFunction.o"
+	@echo "... src/LsFunction.i"
+	@echo "... src/LsFunction.s"
 	@echo "... src/NFunction.o"
 	@echo "... src/NFunction.i"
 	@echo "... src/NFunction.s"
-	@echo "... src/PrefixFunction.o"
-	@echo "... src/PrefixFunction.i"
-	@echo "... src/PrefixFunction.s"
+	@echo "... src/SymbolTable.o"
+	@echo "... src/SymbolTable.i"
+	@echo "... src/SymbolTable.s"
 	@echo "... src/ZFunction.o"
 	@echo "... src/ZFunction.i"
 	@echo "... src/ZFunction.s"

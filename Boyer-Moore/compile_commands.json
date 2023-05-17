@@ -25,8 +25,20 @@
 },
 {
   "directory": "/home/axr/prog/discrete-analysis/Boyer-Moore/.build",
-  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Boyer-Moore/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/PrefixFunction.cpp.o -c /home/axr/prog/discrete-analysis/Boyer-Moore/src/PrefixFunction.cpp",
-  "file": "/home/axr/prog/discrete-analysis/Boyer-Moore/src/PrefixFunction.cpp",
-  "output": "CMakeFiles/main.dir/src/PrefixFunction.cpp.o"
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Boyer-Moore/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/LsFunction.cpp.o -c /home/axr/prog/discrete-analysis/Boyer-Moore/src/LsFunction.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Boyer-Moore/src/LsFunction.cpp",
+  "output": "CMakeFiles/main.dir/src/LsFunction.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/Boyer-Moore/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Boyer-Moore/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/GoodSuffix.cpp.o -c /home/axr/prog/discrete-analysis/Boyer-Moore/src/GoodSuffix.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Boyer-Moore/src/GoodSuffix.cpp",
+  "output": "CMakeFiles/main.dir/src/GoodSuffix.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/Boyer-Moore/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Boyer-Moore/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/SymbolTable.cpp.o -c /home/axr/prog/discrete-analysis/Boyer-Moore/src/SymbolTable.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Boyer-Moore/src/SymbolTable.cpp",
+  "output": "CMakeFiles/main.dir/src/SymbolTable.cpp.o"
 }
 ]

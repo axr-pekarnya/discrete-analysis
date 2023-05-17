@@ -125,19 +125,47 @@ CMakeFiles/main.dir/src/LFunction.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/LFunction.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/axr/prog/discrete-analysis/Boyer-Moore/src/LFunction.cpp -o CMakeFiles/main.dir/src/LFunction.cpp.s
 
-CMakeFiles/main.dir/src/PrefixFunction.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/PrefixFunction.cpp.o: /home/axr/prog/discrete-analysis/Boyer-Moore/src/PrefixFunction.cpp
-CMakeFiles/main.dir/src/PrefixFunction.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/axr/prog/discrete-analysis/Boyer-Moore/.build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/src/PrefixFunction.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/PrefixFunction.cpp.o -MF CMakeFiles/main.dir/src/PrefixFunction.cpp.o.d -o CMakeFiles/main.dir/src/PrefixFunction.cpp.o -c /home/axr/prog/discrete-analysis/Boyer-Moore/src/PrefixFunction.cpp
+CMakeFiles/main.dir/src/LsFunction.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/LsFunction.cpp.o: /home/axr/prog/discrete-analysis/Boyer-Moore/src/LsFunction.cpp
+CMakeFiles/main.dir/src/LsFunction.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/axr/prog/discrete-analysis/Boyer-Moore/.build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/src/LsFunction.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/LsFunction.cpp.o -MF CMakeFiles/main.dir/src/LsFunction.cpp.o.d -o CMakeFiles/main.dir/src/LsFunction.cpp.o -c /home/axr/prog/discrete-analysis/Boyer-Moore/src/LsFunction.cpp
 
-CMakeFiles/main.dir/src/PrefixFunction.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/PrefixFunction.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/axr/prog/discrete-analysis/Boyer-Moore/src/PrefixFunction.cpp > CMakeFiles/main.dir/src/PrefixFunction.cpp.i
+CMakeFiles/main.dir/src/LsFunction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/LsFunction.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/axr/prog/discrete-analysis/Boyer-Moore/src/LsFunction.cpp > CMakeFiles/main.dir/src/LsFunction.cpp.i
 
-CMakeFiles/main.dir/src/PrefixFunction.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/PrefixFunction.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/axr/prog/discrete-analysis/Boyer-Moore/src/PrefixFunction.cpp -o CMakeFiles/main.dir/src/PrefixFunction.cpp.s
+CMakeFiles/main.dir/src/LsFunction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/LsFunction.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/axr/prog/discrete-analysis/Boyer-Moore/src/LsFunction.cpp -o CMakeFiles/main.dir/src/LsFunction.cpp.s
+
+CMakeFiles/main.dir/src/GoodSuffix.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/GoodSuffix.cpp.o: /home/axr/prog/discrete-analysis/Boyer-Moore/src/GoodSuffix.cpp
+CMakeFiles/main.dir/src/GoodSuffix.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/axr/prog/discrete-analysis/Boyer-Moore/.build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/src/GoodSuffix.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/GoodSuffix.cpp.o -MF CMakeFiles/main.dir/src/GoodSuffix.cpp.o.d -o CMakeFiles/main.dir/src/GoodSuffix.cpp.o -c /home/axr/prog/discrete-analysis/Boyer-Moore/src/GoodSuffix.cpp
+
+CMakeFiles/main.dir/src/GoodSuffix.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/GoodSuffix.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/axr/prog/discrete-analysis/Boyer-Moore/src/GoodSuffix.cpp > CMakeFiles/main.dir/src/GoodSuffix.cpp.i
+
+CMakeFiles/main.dir/src/GoodSuffix.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/GoodSuffix.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/axr/prog/discrete-analysis/Boyer-Moore/src/GoodSuffix.cpp -o CMakeFiles/main.dir/src/GoodSuffix.cpp.s
+
+CMakeFiles/main.dir/src/SymbolTable.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/SymbolTable.cpp.o: /home/axr/prog/discrete-analysis/Boyer-Moore/src/SymbolTable.cpp
+CMakeFiles/main.dir/src/SymbolTable.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/axr/prog/discrete-analysis/Boyer-Moore/.build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/src/SymbolTable.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/SymbolTable.cpp.o -MF CMakeFiles/main.dir/src/SymbolTable.cpp.o.d -o CMakeFiles/main.dir/src/SymbolTable.cpp.o -c /home/axr/prog/discrete-analysis/Boyer-Moore/src/SymbolTable.cpp
+
+CMakeFiles/main.dir/src/SymbolTable.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/SymbolTable.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/axr/prog/discrete-analysis/Boyer-Moore/src/SymbolTable.cpp > CMakeFiles/main.dir/src/SymbolTable.cpp.i
+
+CMakeFiles/main.dir/src/SymbolTable.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/SymbolTable.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/axr/prog/discrete-analysis/Boyer-Moore/src/SymbolTable.cpp -o CMakeFiles/main.dir/src/SymbolTable.cpp.s
 
 # Object files for target main
 main_OBJECTS = \
@@ -145,7 +173,9 @@ main_OBJECTS = \
 "CMakeFiles/main.dir/src/ZFunction.cpp.o" \
 "CMakeFiles/main.dir/src/NFunction.cpp.o" \
 "CMakeFiles/main.dir/src/LFunction.cpp.o" \
-"CMakeFiles/main.dir/src/PrefixFunction.cpp.o"
+"CMakeFiles/main.dir/src/LsFunction.cpp.o" \
+"CMakeFiles/main.dir/src/GoodSuffix.cpp.o" \
+"CMakeFiles/main.dir/src/SymbolTable.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
@@ -154,10 +184,12 @@ main: CMakeFiles/main.dir/main.cpp.o
 main: CMakeFiles/main.dir/src/ZFunction.cpp.o
 main: CMakeFiles/main.dir/src/NFunction.cpp.o
 main: CMakeFiles/main.dir/src/LFunction.cpp.o
-main: CMakeFiles/main.dir/src/PrefixFunction.cpp.o
+main: CMakeFiles/main.dir/src/LsFunction.cpp.o
+main: CMakeFiles/main.dir/src/GoodSuffix.cpp.o
+main: CMakeFiles/main.dir/src/SymbolTable.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/axr/prog/discrete-analysis/Boyer-Moore/.build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/axr/prog/discrete-analysis/Boyer-Moore/.build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

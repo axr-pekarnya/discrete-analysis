@@ -17,6 +17,8 @@ add_executable(main main.cpp
     src/NFunction.cpp include/NFunction.hpp
     src/LFunction.cpp include/LFunction.hpp
     src/LsFunction.cpp include/LsFunction.hpp
+    src/GoodSuffix.cpp include/GoodSuffix.hpp
+    src/SymbolTable.cpp include/SymbolTable.hpp
 )
 
 target_include_directories(main PRIVATE include)
