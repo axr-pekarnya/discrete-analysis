@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/home/axr/prog/discrete-analysis/Boyer-Moore/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Boyer-Moore/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/main.cpp.o -c /home/axr/prog/discrete-analysis/Boyer-Moore/main.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Boyer-Moore/main.cpp",
+  "output": "CMakeFiles/main.dir/main.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/Boyer-Moore/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Boyer-Moore/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/ZFunction.cpp.o -c /home/axr/prog/discrete-analysis/Boyer-Moore/src/ZFunction.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Boyer-Moore/src/ZFunction.cpp",
+  "output": "CMakeFiles/main.dir/src/ZFunction.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/Boyer-Moore/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Boyer-Moore/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/NFunction.cpp.o -c /home/axr/prog/discrete-analysis/Boyer-Moore/src/NFunction.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Boyer-Moore/src/NFunction.cpp",
+  "output": "CMakeFiles/main.dir/src/NFunction.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/Boyer-Moore/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Boyer-Moore/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/LFunction.cpp.o -c /home/axr/prog/discrete-analysis/Boyer-Moore/src/LFunction.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Boyer-Moore/src/LFunction.cpp",
+  "output": "CMakeFiles/main.dir/src/LFunction.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/Boyer-Moore/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Boyer-Moore/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/PrefixFunction.cpp.o -c /home/axr/prog/discrete-analysis/Boyer-Moore/src/PrefixFunction.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Boyer-Moore/src/PrefixFunction.cpp",
+  "output": "CMakeFiles/main.dir/src/PrefixFunction.cpp.o"
+}
+]
