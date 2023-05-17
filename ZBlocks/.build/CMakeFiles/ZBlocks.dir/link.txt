@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/ZBlocks.dir/main.cpp.o CMakeFiles/ZBlocks.dir/src/ZFunction.cpp.o -o ZBlocks 

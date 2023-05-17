@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/axr/prog/discrete-analysis/ZBlocks/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/ZBlocks/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/ZBlocks.dir/main.cpp.o -c /home/axr/prog/discrete-analysis/ZBlocks/main.cpp",
+  "file": "/home/axr/prog/discrete-analysis/ZBlocks/main.cpp",
+  "output": "CMakeFiles/ZBlocks.dir/main.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/ZBlocks/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/ZBlocks/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/ZBlocks.dir/src/ZFunction.cpp.o -c /home/axr/prog/discrete-analysis/ZBlocks/src/ZFunction.cpp",
+  "file": "/home/axr/prog/discrete-analysis/ZBlocks/src/ZFunction.cpp",
+  "output": "CMakeFiles/ZBlocks.dir/src/ZFunction.cpp.o"
+}
+]
