@@ -1,3 +1,0 @@
-/home/axr/prog/discrete-analysis/RadixSort/code/.build/CMakeFiles/lab1.dir
-/home/axr/prog/discrete-analysis/RadixSort/code/.build/CMakeFiles/edit_cache.dir
-/home/axr/prog/discrete-analysis/RadixSort/code/.build/CMakeFiles/rebuild_cache.dir
