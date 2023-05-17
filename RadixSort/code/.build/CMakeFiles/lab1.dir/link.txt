@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/lab1.dir/main.o CMakeFiles/lab1.dir/src/RadixSort.o -o lab1 
