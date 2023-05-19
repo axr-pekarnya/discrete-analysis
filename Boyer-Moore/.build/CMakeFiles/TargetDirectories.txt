@@ -1,4 +1,0 @@
-/home/axr/prog/discrete-analysis/Boyer-Moore/.build/CMakeFiles/main.dir
-/home/axr/prog/discrete-analysis/Boyer-Moore/.build/CMakeFiles/test.dir
-/home/axr/prog/discrete-analysis/Boyer-Moore/.build/CMakeFiles/edit_cache.dir
-/home/axr/prog/discrete-analysis/Boyer-Moore/.build/CMakeFiles/rebuild_cache.dir

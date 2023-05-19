@@ -1,44 +1,54 @@
 #include <bits/stdc++.h>
+#include <cstdint>
+#include <cstdio>
+
+using pii = std::pair<int, int>;
 
 std::vector<int> ZFunction(std::vector<uint32_t> &str); 
 std::vector<int> NFunction(std::vector<uint32_t> str);
 std::vector<int> LFunction(std::vector<int>& nFunction);
+std::vector<int> LsFunction(std::vector<int>& nFunction);
+
+
 
 class TGoodSuffix 
 {
     public:
-        TGoodSuffix(std::vector<int>& lFunction) :
-    body(lFunction), strSize(lFunction.size()) {}
-     
-        int Get(int strIdx) const
+        TGoodSuffix(std::vector<int>& nFunction) : strSize(nFunction.size()) 
         {
-            if (strIdx >= this->strSize) {
+            this->lFunction = LFunction(nFunction);
+            this->lsFunction = LsFunction(nFunction);
+        }
+     
+        uint64_t Get(int strIdx)
+        {
+            if (strIdx == this->strSize) {
                 return 1;
             }
 
-            if (this->body[strIdx] == 0) {
-                return this->strSize - this->prefixSize;
+            if (lFunction[strIdx] > 0){
+                return strSize - this->lFunction[strIdx] - 1;
             }
-
-            return this->strSize - this->body[strIdx] - 1;
+            
+            return strSize - this->lsFunction[strIdx];
         }
 
-        int GetPrefixSize() const {
-            return this->prefixSize;
+        uint64_t Shift() const {
+            return strSize - lsFunction[1] - 1;
         }
 
         void DbOut()
         {
-            for (int& it : body){
+            for (int& it : this->lFunction){
                 std::cout << it << ' ';
             }
             std::cout << '\n';
         }
      
     private:
-        std::vector<int> body;
+        std::vector<int> lFunction;
+        std::vector<int> lsFunction;
         int strSize;
-        int prefixSize = 0;
 };
 
 class TSymbolTable 
@@ -46,50 +56,32 @@ class TSymbolTable
     public:
         TSymbolTable(const std::vector<uint32_t> &str) : strSize(str.size())
         {
-            for (int i = this->strSize - 1; i >= 0; --i) {
-                this->body[str[i]].push_back(i);
+            for (int i = 0; i < this->strSize; ++i) {
+                this->body[str[i]] = i;
             }
         }
 
-        int Get(uint32_t symbol, uint32_t strIdx) const
+        uint64_t Get(uint32_t symbol, uint32_t strIdx)
         {
-            std::map< uint32_t, std::vector<uint32_t> >::const_iterator it = this->body.find(symbol);
+            auto it = this->body.find(symbol);
 
             if (it == this->body.end()) {
                 return this->strSize - strIdx;
             }
 
-            const std::vector<uint32_t>& vecIdx = it->second;
-            
-            for (uint32_t i : vecIdx) 
-            {
-                if (i > strIdx){
-                    return 1;
-                }
-                else if (i < strIdx) {
-                    return strIdx - i;
-                }
-            }
-
-            return this->strSize;
+            return strIdx - it->second;
         }
         
         void DbOut()
         {
-            for (auto& it : this->body)
-            {
-                std::cout << it.first << ':';
-            
-                for (auto& num : it.second){
-                    std::cout << num << ' ';
-                }
-                
-                std::cout << '\n';
+            for (auto& it : this->body){
+                std::cout << it.first << ' ' << it.second << '\n';
             }
+            std::cout << '\n';
         }
              
     private:
-        std::map<uint32_t, std::vector<uint32_t>> body;
+        std::map<uint32_t, uint32_t> body;
         int strSize;
 };
 
@@ -136,62 +128,125 @@ std::vector<int> LFunction(std::vector<int> &nFunction)
     for (int i = 0; i < (int)nFunction.size() - 1; ++i)
     {
         int idx = nFunction.size() - nFunction[i];
-        result[idx] = i + 1;
+        
+        if (idx != (int)nFunction.size()){
+            result[idx] = i;
+        }
     }
 
     return result;
 }
 
-using pii = std::pair<int, int>;
+std::vector<int> LsFunction(std::vector<int> &nFunction)
+{
+    std::vector<int> result(nFunction.size(), 0);
 
-std::vector<uint32_t> ParseLine(bool parseOne, std::map<int, pii> &positions)
+    for (int i = nFunction.size() - 1; i >= 0; i--) 
+    {
+        int idx = (nFunction.size() - 1) - i;
+        if (nFunction[idx] == idx + 1) {
+            result[i] = idx + 1;
+        } 
+        else 
+        {
+            if (i == (int)nFunction.size() - 1) {
+                result[i] = 0;
+            } 
+            else {
+                result[i] = result[i + 1];
+            }
+        }
+    }
+
+    return result;
+}
+
+
+std::vector<uint32_t> ParsePattern() 
 {
     std::vector<uint32_t> result;
+    std::string buffer;
+    char symbol = ' ';
 
-    int numOfLine = 1, pos = 0;
-    uint32_t num;
-    std::string line;
-    std::stringstream lineStrm;
-    
-    while (std::getline(std::cin, line))
+    while (true) 
     {
-        int posInLine = 1;
+        symbol = getchar();
 
-        lineStrm.clear();
-        lineStrm << line;
-
-        while (lineStrm >> num)
+        if (buffer.length() && symbol == ' ') 
         {
-            result.push_back(num);
-
-            if (!parseOne){
-                if (posInLine) {
-                    positions.insert({pos, {numOfLine, posInLine}});
-                }
+            result.push_back(std::stoul(buffer));
+            buffer.clear();
+        }
+        else if (symbol == '\n')
+        {
+            if(buffer.length())
+            {
+                result.push_back(std::stoul(buffer));
+                buffer.clear();
             }
 
-            ++posInLine;
-            ++pos;
-        }
-
-        if (parseOne){
             break;
         }
-
-        ++numOfLine;
+        else if (symbol >= '0' && symbol <= '9') {
+            buffer.push_back(symbol);
+        }
     }
 
     return result;
 }
 
-std::ostream& operator<<(std::ostream &os, const std::vector<int> &vec)
+std::vector<uint32_t> ParseText(std::vector<pii>& positions) 
 {
-    for (int elem : vec){
-        os << elem << ' ';
-    }
-    os << '\n';
+    std::vector<uint32_t> result;
+        
+    std::string buffer;
+    char symbol = ' ';
+  
+    unsigned int numOfLine = 1;
+    unsigned int posInLine = 0;
 
-    return os;
+    while (true) 
+    {
+        symbol = getchar();
+
+        if (buffer.length() && symbol == ' ') 
+        {
+            posInLine++;
+            positions.emplace_back(numOfLine, posInLine);
+            result.push_back(std::stoul(buffer));
+            buffer.clear();
+        }
+        else if (symbol == '\n')
+        {
+            if(buffer.length())
+            {
+                posInLine++;
+                positions.emplace_back(numOfLine, posInLine);
+                result.push_back(std::stoul(buffer));
+                buffer.clear();
+            }
+
+            posInLine = 0;
+            numOfLine++;
+        }
+        else if (symbol == EOF)
+        {
+            if(buffer.length() != 0)
+            {
+                posInLine++;
+                positions.emplace_back(numOfLine, posInLine);
+                result.push_back(std::stoul(buffer));
+            }
+
+        break;
+        }
+
+        else if (symbol >= '0' && symbol <= '9') {
+            buffer.push_back(symbol);
+        }
+    }
+
+    return result;
 }
 
 int main()
@@ -200,45 +255,73 @@ int main()
     std::cin.tie(nullptr);
     std::cout.tie(nullptr);
 
-    std::map<int, pii> positions;
-    std::vector<uint32_t> pattern = ParseLine(1, positions);
-    std::vector<uint32_t> text = ParseLine(0, positions);
+    std::vector<pii> positions;
+    std::vector<uint32_t> pattern = ParsePattern();
+    std::vector<uint32_t> text = ParseText(positions);
+   
+    //std::vector<uint32_t> pattern = ParseLine(1, positions);
+    //std::vector<uint32_t> text = ParseLine(0, positions);
 
-    std::vector<int> zFunction = ZFunction(pattern);
     std::vector<int> nFunction = NFunction(pattern);
-    std::vector<int> lFunction = LFunction(nFunction);
 
     TSymbolTable symbolTable(pattern);
-    TGoodSuffix goodSuffix(lFunction);
+    TGoodSuffix goodSuffix(nFunction);
 
     for (uint32_t k = pattern.size() - 1; k < text.size();) 
     {
-		int i = (int)k;
-		bool found = true;
+        int i = (int)k;
+        bool found = true;
 
-		for (int j = pattern.size() - 1; j >= 0; --j) 
+        for (int j = pattern.size() - 1; j >= 0; --j) 
         {
-			if (text[i] != pattern[j]) 
+            if (text[i] != pattern[j]) 
             {
-				int shiftSize = std::max((int)symbolTable.Get(text[i], j), (int)goodSuffix.Get(j + 1));
+                uint64_t shiftSize = std::max(symbolTable.Get(text[i], j), goodSuffix.Get(j + 1));
+                std::cout << symbolTable.Get(text[i], j) << ' ' << goodSuffix.Get(j + 1) << '\n';
 
-				k += shiftSize;
-				found = false;
-				break;
-			}
+                k += shiftSize;
+                found = false;
+                break;
+            }
 
-			--i;
-		}
-		
+            --i;
+        }
+        
         if (found) 
         {
-            std::map<int, pii>::iterator it = positions.find(k - pattern.size() + 1);
+            pii it = positions[k - pattern.size() + 1];
+            std::cout << it.first << ", " << it.second << '\n';
 
-            std::cout << it->second.first << ", " << it->second.second << '\n';
-
-            k += pattern.size() - goodSuffix.GetPrefixSize();
+            k += pattern.size() - goodSuffix.Shift();
         }
-	}
+    }
     
+    /*
+    uint64_t k = pattern.size() - 1;
+
+    while (k < (uint64_t)text.size())
+    {
+        uint64_t pIdx = k;
+        uint64_t tIdx = pattern.size() - 1;
+
+        while (pIdx >= 0 && pattern[pIdx] == text[tIdx])
+        {
+            --pIdx;
+            --tIdx;
+        }
+
+        if (pIdx == -1)
+        {
+            pii it = positions[k - pattern.size() + 1];
+            std::cout << it.first << ", " << it.second << '\n';
+
+            k += goodSuffix.Shift();
+        }
+        else
+        {
+            k += std::max(goodSuffix.Get(pIdx + 1), symbolTable.Get(text[pIdx], pIdx));
+        }
+    }*/
+
     return 0;
 }
