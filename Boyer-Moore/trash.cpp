@@ -1,11 +1,13 @@
-#include <bits/stdc++.h>
-#include <cstdint>
-#include <cstdio>
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+#include <algorithm>
 
-using pii = std::pair<std::uint64_t, uint64_t>;
+using pii = std::pair<int, int>;
 
-std::vector<int> ZFunction(std::vector<uint32_t> &str); 
-std::vector<int> NFunction(std::vector<uint32_t> str);
+std::vector<int> ZFunction(std::vector<int> &str); 
+std::vector<int> NFunction(std::vector<int> str);
 std::vector<int> LFunction(std::vector<int>& nFunction);
 std::vector<int> LsFunction(std::vector<int>& nFunction);
 
@@ -34,7 +36,7 @@ class TGoodSuffix
             return strSize - this->lsFunction[strIdx];
         }
 
-        uint64_t Shift() const {
+        int Shift(){
             return strSize - lsFunction[1];
         }
 
@@ -55,16 +57,16 @@ class TGoodSuffix
 class TSymbolTable 
 {
     public:
-        TSymbolTable(const std::vector<uint32_t> &str) : strSize(str.size())
+        TSymbolTable(const std::vector<int> &str) : strSize(str.size())
         {
             for (int i = 0; i < this->strSize; ++i) {
                 this->body[str[i]] = i;
             }
         }
 
-        int Get(uint32_t symbol, uint32_t strIdx)
+        int Get(int symbol, int strIdx)
         {
-            auto it = this->body.find(symbol);
+            std::map<int, int>::iterator it = this->body.find(symbol);
 
             if (it == this->body.end()) {
                 return strIdx + 1;
@@ -72,25 +74,17 @@ class TSymbolTable
 
             //std::cout << strIdx << ' ' << this->body[symbol] << '\n';
 
-            return strIdx - it->second;
-        }
-        
-        void DbOut()
-        {
-            for (auto& it : this->body){
-                std::cout << it.first << ' ' << it.second << '\n';
-            }
-            std::cout << '\n';
+            return strIdx - this->body[symbol];
         }
              
     private:
-        std::map<uint32_t, uint32_t> body;
+        std::map<int, int> body;
         int strSize;
 };
 
 
 
-std::vector<int> ZFunction(std::vector<uint32_t> &str) 
+std::vector<int> ZFunction(std::vector<int> &str) 
 {
     std::vector<int> result(str.size());
     int left = 0, right = 0;
@@ -114,7 +108,7 @@ std::vector<int> ZFunction(std::vector<uint32_t> &str)
     return result;
 }
 
-std::vector<int> NFunction(std::vector<uint32_t> str)
+std::vector<int> NFunction(std::vector<int> str)
 {
     std::reverse(str.begin(), str.end());
     
@@ -165,9 +159,9 @@ std::vector<int> LsFunction(std::vector<int> &nFunction)
 }
 
 
-std::vector<uint32_t> ParsePattern() 
+std::vector<int> ParsePattern() 
 {
-    std::vector<uint32_t> result;
+    std::vector<int> result;
     std::string buffer;
     char symbol = ' ';
 
@@ -198,9 +192,9 @@ std::vector<uint32_t> ParsePattern()
     return result;
 }
 
-std::vector<uint32_t> ParseText(std::vector<pii>& positions) 
+std::vector<int> ParseText(std::vector<pii>& positions) 
 {
-    std::vector<uint32_t> result;
+    std::vector<int> result;
         
     std::string buffer;
     char symbol = ' ';
@@ -259,27 +253,31 @@ int main()
     std::cout.tie(nullptr);
 
     std::vector<pii> positions;
-    std::vector<uint32_t> pattern = ParsePattern();
-    std::vector<uint32_t> text = ParseText(positions);
+    std::vector<int> pattern = ParsePattern();
+    std::vector<int> text = ParseText(positions);
+
+    if (text.size() < pattern.size() || pattern.size() == 0){
+        return 0;
+    }
    
-    //std::vector<uint32_t> pattern = ParseLine(1, positions);
-    //std::vector<uint32_t> text = ParseLine(0, positions);
+    //std::vector<int> pattern = ParseLine(1, positions);
+    //std::vector<int> text = ParseLine(0, positions);
 
     std::vector<int> nFunction = NFunction(pattern);
 
     TSymbolTable symbolTable(pattern);
     TGoodSuffix goodSuffix(nFunction);
 
-    /*for (uint64_t k = pattern.size() - 1; k < text.size();) 
+    for (int k = pattern.size() - 1; k < (int)text.size();) 
     {
-        uint64_t i = k;
+        int i = k;
         bool found = true;
 
         for (int j = pattern.size() - 1; j >= 0; --j) 
         {
             if (text[i] != pattern[j]) 
             {
-                uint64_t shiftSize = std::max(symbolTable.Get(text[i], j), goodSuffix.Get(j + 1));
+                int shiftSize = std::max(symbolTable.Get(text[i], j), goodSuffix.Get(j + 1));
 
                 k += shiftSize;
                 found = false;
@@ -296,13 +294,14 @@ int main()
 
             k += goodSuffix.Shift();
         }
-    }*/
+    }
 
-    uint64_t k = pattern.size() - 1;
+/*
+    int k = pattern.size() - 1;
 
-    while (k < text.size())
+    while (k < (int)text.size())
     {
-        uint64_t tIdx = k;
+        int tIdx = k;
         int pIdx = pattern.size() - 1;
 
         while (pIdx >= 0 && pattern[pIdx] == text[tIdx])
@@ -322,7 +321,7 @@ int main()
             k += std::max(symbolTable.Get(text[tIdx], pIdx), goodSuffix.Get(pIdx + 1));
         }
     }
-    
+*/    
     return 0;
 }
 
