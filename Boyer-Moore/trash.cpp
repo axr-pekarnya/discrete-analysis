@@ -57,8 +57,10 @@ class TGoodSuffix
 class TSymbolTable 
 {
     public:
-        TSymbolTable(const std::vector<int> &str) : strSize(str.size())
+        TSymbolTable(const std::vector<int> &str)
         {
+            this->strSize = str.size();
+
             for (int i = 0; i < this->strSize; ++i) {
                 this->body[str[i]] = i;
             }
@@ -256,23 +258,19 @@ int main()
     std::vector<int> pattern = ParsePattern();
     std::vector<int> text = ParseText(positions);
 
-    if (text.size() < pattern.size() || pattern.size() == 0){
-        return 0;
-    }
-   
-    //std::vector<int> pattern = ParseLine(1, positions);
-    //std::vector<int> text = ParseLine(0, positions);
-
     std::vector<int> nFunction = NFunction(pattern);
+    std::vector<int> m (text.size(), -1);
 
     TSymbolTable symbolTable(pattern);
     TGoodSuffix goodSuffix(nFunction);
 
+    /*
     for (int k = pattern.size() - 1; k < (int)text.size();) 
     {
+
         int i = k;
         bool found = true;
-
+        
         for (int j = pattern.size() - 1; j >= 0; --j) 
         {
             if (text[i] != pattern[j]) 
@@ -295,33 +293,153 @@ int main()
             k += goodSuffix.Shift();
         }
     }
+    */
 
-/*
-    int k = pattern.size() - 1;
-
-    while (k < (int)text.size())
+    for (int j = pattern.size() - 1; j < (int)text.size();)
     {
-        int tIdx = k;
-        int pIdx = pattern.size() - 1;
+        int i = pattern.size() - 1;    
+        int h = j;
 
-        while (pIdx >= 0 && pattern[pIdx] == text[tIdx])
+        while (true) 
         {
-            --pIdx;
-            --tIdx;
+            if (m[h] == 0) 
+            {
+                if (text[h] == pattern[i])
+                {
+                    if (i == 0) 
+                    {
+                        int entry_position = k - pattern.size() + 1;
+                        entries.emplace_back(text[entry_position].str_number, text[entry_position].position); // сообщить о вхождении
+                        m[j] = pattern.size(); // подстрока [k - pattern.size() + 1 .. k] совпадает с образцом
+                        // такой сдвиг, что префикс образца должен совпасть с суффиксом
+                        if (pattern.size() > 2) {
+                            j += pattern.size() - little_l_function[1];
+                        } else {
+                            j++;
+                        }
+                        break; //конец фазы
+                    } 
+                    else 
+                    { // если  i > 0
+                        h--;
+                        i--;
+                    }
+                } 
+                else 
+                { // несовпадение
+                    m[j] = j - h;
+                    // нахождение хорошего суффикса
+                    int maxSuff = GoodSuffix(pattern, i, big_l_function, little_l_function);
+                    // нахождение плохого символа
+                    int maxSymb = BadSymbol(text[h] ,i, r_function);
+                    j += std::max(maxSuff, maxSymb);
+               
+                    break; // конец фазы
+                }
+            } 
+            else if (m[h] < nFunction[i]) {
+                i -= m[h];
+            } 
+            else if (m[h] >= nFunction[i] && nFunction[i] >= i) 
+            {
+                int entry_position = j - pattern.size() + 1;
+                entries.emplace_back(text[entry_position].str_number, text[entry_position].position); // сообщить о вхождении
+                m[k] = j - h;
+                // такой сдвиг, что префикс образца должен совпасть с суффиксом
+                if (pattern.size() > 2) {
+                    j += pattern.size() - little_l_function[1];
+                } 
+                else {
+                    ++j;
+                }
+
+                break; // конец фазы
+            } 
+            else if (m[h] > nFunction[i] && nFunction[i] < i) 
+            {
+                m[j] = j - h;
+                // несовпадение в i - n[i]
+                // нахождение хорошего суффикса
+                int pattern_pos = i - nFunction[i];
+                unsigned text_symbol = text[h - nFunction[i]];
+                int maxSuff = GoodSuffix(pattern, pattern_pos, big_l_function, little_l_function);
+                int maxSymb = BadSymbol(text_symbol, pattern_pos, r_function);
+                j += std::max(maxSuff, maxSymb);
+                break; // конец фазы
+            } 
+            else if (m[h] == nFunction[i] && nFunction[i] < i) 
+            {
+                i -= m[h];
+                h -= m[h];
+            }
         }
 
-        if (pIdx == -1)
+        /*
+        while (true)
         {
-            pii it = positions[k - pattern.size() + 1];
-            std::cout << it.first << ", " << it.second << '\n';
+            if (m[h] == -1 || (nFunction[i] == 0 && m[h] == 0))
+            {
+                if (text[h] == pattern[i] && i == 1)
+                {
+                    std::cout << "Entry\n";
 
-            k += goodSuffix.Shift();
+                    m[j] = pattern.size() - 1;
+                    j += goodSuffix.Shift();
+                }
+                
+                if (text[h] == pattern[i] && i > 1)
+                {
+                    --h;
+                    --i;
+
+                    continue;
+                }
+
+                if (text[h] != pattern[i])
+                {
+                    m[j] = j - h;
+                    j += std::max(symbolTable.Get(text[h], i), goodSuffix.Get(i + 1));
+
+                    break;
+                }
+
+            }
+
+            if (m[h] < nFunction[i])
+            {
+                std::cout << "Entry\n";
+
+                i = i - m[h];
+                h = h - m[h];
+               
+                continue;
+            }
+
+            if (m[h] >= nFunction[i] && nFunction[i] == i && i > 0)
+            {
+                std::cout << "Entry\n";
+
+                m[j] = j - h;
+                j += goodSuffix.Shift();
+            
+                break;
+            }
+
+            if (m[h] > nFunction[i] && nFunction[i] < i)
+            {
+                m[j] = j - h;
+                j += std::max(symbolTable.Get(text[h], i - nFunction[i]), goodSuffix.Get(i - nFunction[i] + 1));
+            }
+
+            if (m[h] == nFunction[i] && nFunction[i] > 0 && nFunction[i] < i)
+            {
+                i -= m[h];
+                h -= m[h];
+            }
         }
-        else {
-            k += std::max(symbolTable.Get(text[tIdx], pIdx), goodSuffix.Get(pIdx + 1));
-        }
+        */
     }
-*/    
+
     return 0;
 }
 
