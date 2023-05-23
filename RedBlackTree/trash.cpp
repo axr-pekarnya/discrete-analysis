@@ -3,12 +3,14 @@
 #include <fstream>
 #include <iostream>
 
-const char DEFAULT_COLOUR = 1;
+const char NULL_COLOUR = 'n';
+const char BLACK_COLOUR = 'b';
+const char RED_COLOUR = 'r';
 
 class TItem
 {
     public:
-        TItem(): key(""), value(0) {}
+        TItem() = default;
 
         std::string& GetKey() {
             return key;
@@ -32,12 +34,6 @@ class TItem
             return fin;
         }
        
-        friend std::ostream& operator<<(std::ostream& fout, const TItem& elem)
-        {
-            fout << elem.key << ' ' << elem.value << '\n';
-            return fout;
-        }
-
     private:
         std::string key;
         uint64_t value;
@@ -150,8 +146,8 @@ class TRedBlackTree
 
             parent->parent = cur;
 
-            if (cur->parent == NULL){
-                root = parent;
+            if (cur->parent == nullptr){
+                root = cur;
             }
             
             return root;
@@ -184,7 +180,7 @@ class TRedBlackTree
             
             parent->parent = cur;
             
-            if (cur->parent == NULL){
+            if (cur->parent == nullptr){
                 root = cur;
             }
             
@@ -195,14 +191,14 @@ class TRedBlackTree
 
     public:
 
-        TNode* root = NULL;
+        TNode* root = nullptr;
         TRedBlackTree() = default;
 
         TNode* Insert(TNode* node, TItem& data)
         {
-            if (root == NULL)
+            if (root == nullptr)
             {
-                root = new TNode(NULL, NULL, NULL, false, data);
+                root = new TNode(nullptr, nullptr, nullptr, false, data);
                 std::cout << "OK" << std::endl;
             
                 return root;
@@ -218,9 +214,9 @@ class TRedBlackTree
             } 
             else if (next == 1)
             {
-                if (node->right == NULL)
+                if (node->right == nullptr)
                 {
-                    node->right = new TNode(node, NULL, NULL, true, data);
+                    node->right = new TNode(node, nullptr, nullptr, true, data);
                     std::cout << "OK" << std::endl;
                 
                     InsertBalance(node->right);
@@ -232,9 +228,9 @@ class TRedBlackTree
             } 
             else
             {
-                if (node->left == NULL)
+                if (node->left == nullptr)
                 {
-                    node->left = new TNode(node, NULL, NULL, true, data);
+                    node->left = new TNode(node, nullptr, nullptr, true, data);
                     std::cout << "OK" << std::endl;
                 
                     InsertBalance(node->left);
@@ -257,7 +253,7 @@ class TRedBlackTree
                 delete node;
                 std::cout << "OK" << std::endl;
                 
-                this->root = NULL;
+                this->root = nullptr;
                 return root;
             }
 
@@ -270,10 +266,10 @@ class TRedBlackTree
                     if (node->parent) 
                     {
                         if (node->parent->left == node) {
-                            node->parent->left = NULL;
+                            node->parent->left = nullptr;
                         }
                         else {
-                            node->parent->right = NULL;
+                            node->parent->right = nullptr;
                         }
                     }
 
@@ -352,10 +348,10 @@ class TRedBlackTree
                     if (node->parent) 
                     {
                         if (node->parent->left == node) {
-                            node->parent->left = NULL;
+                            node->parent->left = nullptr;
                         }
                         else {
-                            node->parent->right = NULL;
+                            node->parent->right = nullptr;
                         }
                     }
                     
@@ -366,7 +362,13 @@ class TRedBlackTree
                 }
                 else
                 {
-                    replacement = node->right ? Left(node->right) : Right(node->left);
+                    if (node->right){
+                        replacement = Left(node->right);
+                    }
+                    else {
+                        replacement = Right(node->left);
+                    }
+
                     node->SetData(replacement->GetData());
 
                     Erase(replacement);
@@ -380,13 +382,13 @@ class TRedBlackTree
 
         TNode* Find(TNode* node, const std::string& key)
         {
-            if (node == NULL) {
-                return NULL;
+            if (node == nullptr) {
+                return nullptr;
             }
 
             int next = Compare(key, node->GetData().GetKey());
             
-            if(!next){
+            if (!next){
                 return node;
             }
             else if (next == 1){
@@ -414,12 +416,18 @@ class TRedBlackTree
                 brother = node->parent->left;
             }
         
-            if (brother == NULL){
+            if (brother == nullptr){
                 return EraseBalance(node->parent);
             }
             if (brother->colour) 
             {
-                side ? RightRotation(brother) : LeftRotation(brother);
+                if (side){
+                    RightRotation(brother);
+                }
+                else {
+                    LeftRotation(brother);
+                }
+
                 return EraseBalance(node);
             }
             else
@@ -473,7 +481,7 @@ class TRedBlackTree
             
             if (node->parent->parent->left == node->parent)
             {
-                if (node->parent->parent->right == NULL || !node->parent->parent->right->colour) 
+                if (node->parent->parent->right == nullptr || !node->parent->parent->right->colour) 
                 {
                     if (node->parent->right == node)
                     {
@@ -493,7 +501,7 @@ class TRedBlackTree
                     node->parent->colour = false;
                     node->parent->parent->right->colour = false;
                 
-                    if (node->parent->parent->parent != NULL) {
+                    if (node->parent->parent->parent != nullptr) {
                         node->parent->parent->colour = true;
                     }
 
@@ -504,7 +512,7 @@ class TRedBlackTree
             } 
             else 
             {
-                if (node->parent->parent->left == NULL || !node->parent->parent->left->colour)
+                if (node->parent->parent->left == nullptr || !node->parent->parent->left->colour)
                 {
                     if (node->parent->left == node)
                     {
@@ -524,7 +532,7 @@ class TRedBlackTree
                     node->parent->colour = false;
                     node->parent->parent->left->colour = false;
                     
-                    if (node->parent->parent->parent != NULL) {
+                    if (node->parent->parent->parent != nullptr) {
                         node->parent->parent->colour = true;
                     }
                     
@@ -563,15 +571,21 @@ class TFormatter
         uint64_t value;
         std::string key;
 
-        TFormatter()
-        {
-            this->colour = DEFAULT_COLOUR;
+        TFormatter(){
+            this->colour = NULL_COLOUR;
             this->value = 0;
+            this->key = '0';
         }
 
         TFormatter(char colourInput, uint64_t valueInput, std::string& keyInput)
         {
-            this->colour = colourInput;
+            if (colourInput){
+                this->colour = RED_COLOUR;
+            }
+            else {
+                this->colour = BLACK_COLOUR;
+            }
+
             this->value = valueInput;
             this->key = keyInput;
         }
@@ -584,7 +598,7 @@ class TFormatter
 
         friend std::ostream& operator<<(std::ostream& fout, const TFormatter& elem)
         {
-            fout << elem.colour << elem.value << elem.key << ' ';
+            fout << elem.colour << ' ' << elem.value << ' ' << elem.key << '\n';
             return fout;
         }
 };
@@ -593,29 +607,23 @@ class TFormatter
 
 class TFileManager
 {
-    friend TFormatter;
-
     public:
         TFileManager() = default;
         
         static void Save(TNode* node, std::ofstream &fout)
         {
-            if (!fout.is_open()){
-                return;
-            }
-
-            if (!node)
+            if (node)
             {
-                TFormatter itemOutput;
-                fout << itemOutput;
-            } 
-            else
-            {
-                TFormatter itemOutput(node->colour + '0', node->GetData().GetValue(), node->GetData().GetKey());
+                TFormatter itemOutput(node->colour, node->GetData().GetValue(), node->GetData().GetKey());
                 fout << itemOutput;
 
                 Save(node->left, fout);
                 Save(node->right, fout);
+            }
+            else 
+            {
+                TFormatter itemOutput;
+                fout << itemOutput;
             }
         }
 
@@ -624,22 +632,18 @@ class TFileManager
             TFormatter itemInput;
             TItem data;
 
-            if (!fin.is_open()){
-                return node;
-            }
-
             fin >> itemInput;
-        
-            if (itemInput.colour != DEFAULT_COLOUR)
+
+            if (itemInput.colour != NULL_COLOUR)
             {
                 data.SetKey(itemInput.key);
                 data.SetValue(itemInput.value);
              
-                if (itemInput.colour == '0'){
-                    node = new TNode(NULL, NULL, NULL, false, data);
+                if (itemInput.colour == RED_COLOUR){
+                    node = new TNode(nullptr, nullptr, nullptr, true, data);
                 } 
                 else {
-                    node = new TNode(NULL, NULL, NULL, true, data);
+                    node = new TNode(nullptr, nullptr, nullptr, false, data);
                 }
             
                 node->left = Load(node->left, fin);
@@ -657,10 +661,25 @@ class TFileManager
                 return node;
             }
 
-            return NULL;
+            return nullptr;
         }
 };
 
+
+void PrintTree(TNode* node)
+{
+    if (node->left){
+        PrintTree(node->left);
+    }
+
+    if (node->right){
+        PrintTree(node->right);   
+    }
+
+    if (node){
+        std::cout << node->colour << ' ' << node->GetData().GetKey() << ' ' << node->GetData().GetValue() << '\n';
+    }
+}
 
 
 int main()
@@ -669,8 +688,8 @@ int main()
     std::ifstream fin;
 
     std::ios_base::sync_with_stdio(false);
-    std::cin.tie(NULL);
-    std::cout.tie(NULL);
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
 
     std::string strInput;
     std::string key;
@@ -681,6 +700,10 @@ int main()
     
     while (std::cin >> strInput) 
     {
+//        if (tree->root){
+//            PrintTree(tree->root);
+//        }
+
         if (!strInput.compare("+")) 
         {
             std::cin >> data;
@@ -692,8 +715,8 @@ int main()
         
             TNode *need_to_delete = tree->Find(tree->root, key);
         
-            if (need_to_delete == NULL) {
-                std::cout << "NoSuchWord" << std::endl;
+            if (need_to_delete == nullptr) {
+                std::cout << "NoSuchWord\n";
             }
             else {
                 tree->Erase(need_to_delete);
@@ -713,7 +736,7 @@ int main()
                 
                 fout.close();
 
-                std::cout << "OK" << std::endl;
+                std::cout << "OK\n";
             }
             else if (!strInput.compare("Load")) 
             {
@@ -726,30 +749,24 @@ int main()
                 
                 fin.close();
 
-                std::cout << "OK" << std::endl;
+                std::cout << "OK\n";
             }
-        }
-        else if (!strInput.compare("`")) 
-        {
-            tree->Clear(tree->root);
-
-            delete tree;
-            return 0;
         }
         else 
         {
-            key = strInput;
-            TNode *temp = tree->Find(tree->root, key);
+            TNode *found = tree->Find(tree->root, strInput);
         
-            if (temp == NULL){
+            if (found == nullptr){
                 std::cout << "NoSuchWord" << std::endl;
             }
             else { 
-                std::cout << "OK: " << temp->GetData().GetValue() << std::endl;
+                std::cout << "OK: " << found->GetData().GetValue() << '\n';
             }
         }
     }
 
+    delete fileManager;
     delete tree;
+    
     return 0;
 }
