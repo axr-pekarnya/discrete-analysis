@@ -1,4 +1,0 @@
-/home/axr/prog/discrete-analysis/ZBlocks/.build/CMakeFiles/ZBlocks.dir
-/home/axr/prog/discrete-analysis/ZBlocks/.build/CMakeFiles/test.dir
-/home/axr/prog/discrete-analysis/ZBlocks/.build/CMakeFiles/edit_cache.dir
-/home/axr/prog/discrete-analysis/ZBlocks/.build/CMakeFiles/rebuild_cache.dir
