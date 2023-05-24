@@ -1,169 +1,112 @@
+#include <cstdint>
 #include <iostream>
+#include <ostream>
 #include <string>
 #include <map>
 #include <vector>
 #include <algorithm>
 
-using pii = std::pair<int, int>;
+using pii = std::pair<uint32_t, uint32_t>;
 
-std::vector<int> ZFunction(std::vector<int> &str); 
-std::vector<int> NFunction(std::vector<int> str);
-std::vector<int> LFunction(std::vector<int>& nFunction);
+std::ostream& operator<<(std::ostream &os, const std::vector<int> &vec)
+{
+    for (int elem : vec){
+        os << elem << ' ';
+    }
+    os << '\n';
+
+    return os;
+}
+
+std::vector<int> ZFunction(std::vector<uint32_t>& str);
+std::vector<int> NFunction(std::vector<uint32_t>& str);
+std::vector<int> LFunction(std::vector<int>& nFucntion);
 std::vector<int> LsFunction(std::vector<int>& nFunction);
 
-
-
-class TGoodSuffix 
+class TGoodSuffix
 {
     public:
-        TGoodSuffix(std::vector<int>& nFunction) 
+        TGoodSuffix(std::vector<int>& lFunctionInput, std::vector<int>& lsFunctionInput) : 
+            lFunction(lFunctionInput), 
+            lsFunction(lsFunctionInput),
+            size(lFunction.size()) {}
+    
+        uint32_t Get(uint32_t idx)
         {
-            this->strSize = nFunction.size();
-            this->lFunction = LFunction(nFunction);
-            this->lsFunction = LsFunction(nFunction);
-        }
-     
-        int Get(int strIdx)
-        {
-            if (strIdx == this->strSize) {
+            if (!idx)
+            {
+                if (size > 2){
+                    return size - lsFunction[1] - 1;
+                }
+
                 return 1;
             }
 
-            if (lFunction[strIdx] > 0){
-                return strSize - this->lFunction[strIdx] - 1;
+            if (idx == (uint32_t)this->size - 1){
+                return 1;
             }
-            
-            return strSize - this->lsFunction[strIdx];
+
+            if (lFunction[idx + 1]){
+                return size - lFunction[idx + 1] - 1;  
+            }
+
+            return size - lsFunction[idx + 1]; 
         }
 
-        int Shift(){
-            return strSize - lsFunction[1];
-        }
-
-        void DbOut()
-        {
-            for (int& it : this->lFunction){
-                std::cout << it << ' ';
-            }
-            std::cout << '\n';
-        }
-     
     private:
         std::vector<int> lFunction;
         std::vector<int> lsFunction;
-        int strSize;
+        uint32_t size;
 };
 
-class TSymbolTable 
+class TSymbolTable
 {
     public:
-        TSymbolTable(const std::vector<int> &str)
-        {
-            this->strSize = str.size();
-
-            for (int i = 0; i < this->strSize; ++i) {
-                this->body[str[i]] = i;
+        TSymbolTable(std::vector<uint32_t>& pattern){
+            for (unsigned i = 0; i < pattern.size(); ++i){
+                this->table[pattern[i]] = i;
             }
         }
 
-        int Get(int symbol, int strIdx)
+        uint32_t Get(uint32_t symbol, uint32_t idx)
         {
-            std::map<int, int>::iterator it = this->body.find(symbol);
+            auto it = table.find(symbol);
 
-            if (it == this->body.end()) {
-                return strIdx + 1;
+            if (it == table.end()){
+                return idx + 1;
             }
 
-            //std::cout << strIdx << ' ' << this->body[symbol] << '\n';
-
-            return strIdx - this->body[symbol];
+            return idx - it->second; 
         }
-             
+
     private:
-        std::map<int, int> body;
-        int strSize;
+        std::map<uint32_t, uint32_t> table;
 };
 
-
-
-std::vector<int> ZFunction(std::vector<int> &str) 
+class TSuccesfulShift
 {
-    std::vector<int> result(str.size());
-    int left = 0, right = 0;
+    public:
+        TSuccesfulShift(std::vector<int>& lsFunctionInput) :
+            lsFunction(lsFunctionInput),
+            size(lsFunctionInput.size() - 1) {}
 
-    for(int i = 1; i < (int)str.size(); ++i) 
-    {
-        if(i < right){
-            result[i] = std::min(right - i, result[i - left]);
-        }
-
-        while(str[result[i]] == str[i + result[i]]) {
-            result[i]++;
-        }
-
-        if(i + result[i] > right) 
+        int Get()
         {
-            left = i;
-            right = i + result[i];
-        }
-    }
-    return result;
-}
-
-std::vector<int> NFunction(std::vector<int> str)
-{
-    std::reverse(str.begin(), str.end());
-    
-    std::vector<int> result = ZFunction(str);
-    std::reverse(result.begin(), result.end());
-
-    return result;
-}
-
-std::vector<int> LFunction(std::vector<int> &nFunction)
-{
-    std::vector<int> result(nFunction.size(), 0);
-
-    for (int i = 0; i < (int)nFunction.size() - 1; ++i)
-    {
-        int idx = nFunction.size() - nFunction[i];
-        
-        if (idx != (int)nFunction.size()){
-            result[idx] = i;
-        }
-    }
-
-    return result;
-}
-
-std::vector<int> LsFunction(std::vector<int> &nFunction)
-{
-    std::vector<int> result(nFunction.size(), 0);
-
-    for (int i = nFunction.size() - 1; i >= 0; i--) 
-    {
-        int idx = (nFunction.size() - 1) - i;
-        if (nFunction[idx] == idx + 1) {
-            result[i] = idx + 1;
-        } 
-        else 
-        {
-            if (i == (int)nFunction.size() - 1) {
-                result[i] = 0;
-            } 
-            else {
-                result[i] = result[i + 1];
+            if (this->size > 2){
+                return size - lsFunction[1] - 1;
             }
+
+            return 1;
         }
-    }
+    
+    private:
+        std::vector<int> lsFunction;
+        int size;
+};
 
-    return result;
-}
-
-
-std::vector<int> ParsePattern() 
+std::vector<uint32_t> ParsePattern() 
 {
-    std::vector<int> result;
+    std::vector<uint32_t> result;
     std::string buffer;
     char symbol = ' ';
 
@@ -194,9 +137,9 @@ std::vector<int> ParsePattern()
     return result;
 }
 
-std::vector<int> ParseText(std::vector<pii>& positions) 
+std::vector<uint32_t> ParseText(std::vector<pii>& positions) 
 {
-    std::vector<int> result;
+    std::vector<uint32_t> result;
         
     std::string buffer;
     char symbol = ' ';
@@ -248,6 +191,84 @@ std::vector<int> ParseText(std::vector<pii>& positions)
     return result;
 }
 
+std::vector<int> ZFunction(std::vector<uint>& str) 
+{
+    std::vector<int> result(str.size());
+    int left = 0, right = 0;
+
+    for (int i = 1; i < (int)str.size(); ++i) 
+    {
+        if (i <= right){
+            result[i] = std::min(right - i + 1, result[i - left]);
+        }
+
+        while (str[result[i]] == str[i + result[i]] && i + result[i] < (int)str.size()) {
+            result[i]++;
+        }
+
+        if (i + result[i] - 1 > right)
+        {
+            left = i;
+            right = i + result[i] - 1;
+        }
+    }
+
+    return result;
+}
+
+std::vector<int> NFunction(std::vector<uint32_t>& str)
+{
+    std::vector<uint32_t> strRev = str;
+    std::reverse(strRev.begin(), strRev.end());
+    
+    std::vector<int> result = ZFunction(strRev);
+    std::reverse(result.begin(), result.end());
+
+    return result;
+}
+
+std::vector<int> LFunction(std::vector<int>& nFunction)
+{
+    std::vector<int> result(nFunction.size(), 0);
+
+    for (int i = 0; i < (int)nFunction.size() - 1; ++i)
+    {
+        int idx = nFunction.size() - nFunction[i];
+        
+        if (idx < (int)nFunction.size()){
+            result[idx] = i;
+        }
+    }
+
+    return result;
+}
+
+std::vector<int> LsFunction(std::vector<int>& nFunction)
+{
+    std::vector<int> result(nFunction.size() + 1, 0);
+
+    for (int i = nFunction.size() - 1; i >= 0; --i) 
+    {
+        int idx = (nFunction.size() - 1) - i;
+
+        if (nFunction[idx - 1] == idx) {
+            result[i] = idx;
+        } 
+        else {
+            result[i] = result[i + 1];
+        } 
+    }
+
+    return result;
+}
+
+std::ostream& operator<<(std::ostream& fout, pii elem)
+{
+    fout << elem.first << ", " << elem.second;
+    return fout;
+}
+
+
 int main()
 {
     std::ios::sync_with_stdio(false);
@@ -255,191 +276,97 @@ int main()
     std::cout.tie(nullptr);
 
     std::vector<pii> positions;
-    std::vector<int> pattern = ParsePattern();
-    std::vector<int> text = ParseText(positions);
+    std::vector<uint32_t> pattern = ParsePattern();
+    std::vector<uint32_t> text = ParseText(positions);
+
+    if (!text.size()){
+        return 0;
+    }
 
     std::vector<int> nFunction = NFunction(pattern);
-    std::vector<int> m (text.size(), -1);
+    std::vector<int> lFunction = LFunction(nFunction);
+    std::vector<int> lsFunction = LsFunction(nFunction);
 
     TSymbolTable symbolTable(pattern);
-    TGoodSuffix goodSuffix(nFunction);
+    TGoodSuffix goodSuffix(lFunction, lsFunction);
+    TSuccesfulShift succesShift(lsFunction);
 
-    /*
-    for (int k = pattern.size() - 1; k < (int)text.size();) 
+    std::vector<int> m(text.size(), 0);
+
+    for (uint32_t j = pattern.size() - 1; j < (uint32_t)text.size();)
     {
-
-        int i = k;
-        bool found = true;
-        
-        for (int j = pattern.size() - 1; j >= 0; --j) 
-        {
-            if (text[i] != pattern[j]) 
-            {
-                int shiftSize = std::max(symbolTable.Get(text[i], j), goodSuffix.Get(j + 1));
-
-                k += shiftSize;
-                found = false;
-                break;
-            }
-
-            --i;
-        }
-        
-        if (found) 
-        {
-            pii it = positions[k - pattern.size() + 1];
-            std::cout << it.first << ", " << it.second << '\n';
-
-            k += goodSuffix.Shift();
-        }
-    }
-    */
-
-    for (int j = pattern.size() - 1; j < (int)text.size();)
-    {
-        int i = pattern.size() - 1;    
         int h = j;
+        int i = pattern.size() - 1;
 
-        while (true) 
-        {
-            if (m[h] == 0) 
-            {
-                if (text[h] == pattern[i])
-                {
-                    if (i == 0) 
-                    {
-                        int entry_position = k - pattern.size() + 1;
-                        entries.emplace_back(text[entry_position].str_number, text[entry_position].position); // сообщить о вхождении
-                        m[j] = pattern.size(); // подстрока [k - pattern.size() + 1 .. k] совпадает с образцом
-                        // такой сдвиг, что префикс образца должен совпасть с суффиксом
-                        if (pattern.size() > 2) {
-                            j += pattern.size() - little_l_function[1];
-                        } else {
-                            j++;
-                        }
-                        break; //конец фазы
-                    } 
-                    else 
-                    { // если  i > 0
-                        h--;
-                        i--;
-                    }
-                } 
-                else 
-                { // несовпадение
-                    m[j] = j - h;
-                    // нахождение хорошего суффикса
-                    int maxSuff = GoodSuffix(pattern, i, big_l_function, little_l_function);
-                    // нахождение плохого символа
-                    int maxSymb = BadSymbol(text[h] ,i, r_function);
-                    j += std::max(maxSuff, maxSymb);
-               
-                    break; // конец фазы
-                }
-            } 
-            else if (m[h] < nFunction[i]) {
-                i -= m[h];
-            } 
-            else if (m[h] >= nFunction[i] && nFunction[i] >= i) 
-            {
-                int entry_position = j - pattern.size() + 1;
-                entries.emplace_back(text[entry_position].str_number, text[entry_position].position); // сообщить о вхождении
-                m[k] = j - h;
-                // такой сдвиг, что префикс образца должен совпасть с суффиксом
-                if (pattern.size() > 2) {
-                    j += pattern.size() - little_l_function[1];
-                } 
-                else {
-                    ++j;
-                }
-
-                break; // конец фазы
-            } 
-            else if (m[h] > nFunction[i] && nFunction[i] < i) 
-            {
-                m[j] = j - h;
-                // несовпадение в i - n[i]
-                // нахождение хорошего суффикса
-                int pattern_pos = i - nFunction[i];
-                unsigned text_symbol = text[h - nFunction[i]];
-                int maxSuff = GoodSuffix(pattern, pattern_pos, big_l_function, little_l_function);
-                int maxSymb = BadSymbol(text_symbol, pattern_pos, r_function);
-                j += std::max(maxSuff, maxSymb);
-                break; // конец фазы
-            } 
-            else if (m[h] == nFunction[i] && nFunction[i] < i) 
-            {
-                i -= m[h];
-                h -= m[h];
-            }
-        }
-
-        /*
         while (true)
         {
-            if (m[h] == -1 || (nFunction[i] == 0 && m[h] == 0))
+            if (!m[h])
             {
-                if (text[h] == pattern[i] && i == 1)
+                if (text[h] == pattern[i] && i == 0)
                 {
-                    std::cout << "Entry\n";
+                    std::cout << positions[j - pattern.size() + 1] << '\n';
 
-                    m[j] = pattern.size() - 1;
-                    j += goodSuffix.Shift();
-                }
-                
-                if (text[h] == pattern[i] && i > 1)
-                {
-                    --h;
-                    --i;
-
-                    continue;
-                }
-
-                if (text[h] != pattern[i])
-                {
-                    m[j] = j - h;
-                    j += std::max(symbolTable.Get(text[h], i), goodSuffix.Get(i + 1));
+                    m[j] = pattern.size();
+                    j += succesShift.Get();
 
                     break;
                 }
+                
+                if (text[h] == pattern[i] && i > 0)
+                {
+                    --i;
+                    --h;
 
+                    continue;
+                }
+                
+                if (text[h] != pattern[i])
+                {
+                    m[j] = j - h;
+
+                    j += std::max(goodSuffix.Get(i), symbolTable.Get(text[h], i));
+                    
+                    break;
+                }
             }
-
+             
             if (m[h] < nFunction[i])
             {
-                std::cout << "Entry\n";
+                i -= m[h];
+                h -= m[h];
 
-                i = i - m[h];
-                h = h - m[h];
-               
                 continue;
             }
 
-            if (m[h] >= nFunction[i] && nFunction[i] == i && i > 0)
+            if (m[h] >= nFunction[i] && nFunction[i] >= i)
             {
-                std::cout << "Entry\n";
+                std::cout << positions[j - pattern.size() + 1] << '\n';
 
                 m[j] = j - h;
-                j += goodSuffix.Shift();
-            
+                j += succesShift.Get();
+                
                 break;
             }
 
             if (m[h] > nFunction[i] && nFunction[i] < i)
             {
                 m[j] = j - h;
-                j += std::max(symbolTable.Get(text[h], i - nFunction[i]), goodSuffix.Get(i - nFunction[i] + 1));
+                j += std::max(goodSuffix.Get(i - nFunction[i]), symbolTable.Get(text[h - nFunction[i]], i - nFunction[i]));
+
+                break;
             }
 
-            if (m[h] == nFunction[i] && nFunction[i] > 0 && nFunction[i] < i)
+            if (m[h] == nFunction[i] && nFunction[i] > 0 && nFunction[i] < (int)i)
             {
                 i -= m[h];
                 h -= m[h];
+
+                continue;
             }
         }
-        */
     }
-
+       
     return 0;
 }
+
 
