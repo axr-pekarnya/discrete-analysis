@@ -1,0 +1,177 @@
+\section{Описание}
+
+Основная суть алгоритма заключается в улучшении оценки времени работы алгоритма Бойера-Мура, в стандартном виде использующем \(6m\) сравнений, где \(m\) - длина исходного текста. Алгоритм Апостолико-Джанкарло позволяет сократить количесвто сравнений до \(2m\).
+
+\par
+
+Важно отметить, что эффективный алгоритм Апостолико-Джанкарло по-прежнему использует <<Правило хорошего суффикса>> и <<Правило плохого символа>>, описанные в алгоритме Бойера-Мура, нововведение заключается в таблице \(M\), хранящей информацию о количесвте совпавших символов, что позволяет не выполнять каждую фазу лгоритма Бойера-Мура <<с нуля>>.
+
+\pagebreak
+
+\section{Исходный код}
+
+Ниже приведён код с реализованными <<Сильным правилом хорошего символа>> (класс TGoodSuffix), <<Сильным правилом плохого символа>> (класс TSymbolTable) и самим алгоритмом с использованием таблицы \(M\), описанными в [1]. 
+
+\begin{lstlisting}[language=C]
+
+class TGoodSuffix
+{
+	public:
+	TGoodSuffix(std::vector<int>& lFunctionInput, std::vector<int>& lsFunctionInput) : 
+	lFunction(lFunctionInput), 
+	lsFunction(lsFunctionInput),
+	size(lFunction.size()) {}
+	
+	uint32_t Get(uint32_t idx)
+	{
+		if (!idx)
+		{
+			if (size > 2){
+				return size - lsFunction[1] - 1;
+			}
+			
+			return 1;
+		}
+		
+		if (idx == (uint32_t)this->size - 1){
+			return 1;
+		}
+		
+		if (lFunction[idx + 1]){
+			return size - lFunction[idx + 1] - 1;  
+		}
+		
+		return size - lsFunction[idx + 1]; 
+	}
+	
+	private:
+	std::vector<int> lFunction;
+	std::vector<int> lsFunction;
+	uint32_t size;
+};
+
+\end{lstlisting}
+
+\begin{lstlisting}[language=C]
+
+class TSymbolTable
+{
+	public:
+	TSymbolTable(std::vector<uint32_t>& pattern){
+		for (unsigned i = 0; i < pattern.size(); ++i){
+			this->table[pattern[i]] = i;
+		}
+	}
+	
+	uint32_t Get(uint32_t symbol, uint32_t idx)
+	{
+		auto it = table.find(symbol);
+		
+		if (it == table.end()){
+			return idx + 1;
+		}
+		
+		return idx - it->second; 
+	}
+	
+	private:
+	std::map<uint32_t, uint32_t> table;
+};
+
+\end{lstlisting}
+	
+\begin{lstlisting}[language=C]
+	
+	std::vector<int> m(text.size(), 0);
+	
+	for (uint32_t j = pattern.size() - 1; j < (uint32_t)text.size();)
+	{
+		int h = j;
+		int i = pattern.size() - 1;
+		
+		while (true)
+		{
+			if (!m[h])
+			{
+				if (text[h] == pattern[i] && i == 0)
+				{
+					std::cout << positions[j - pattern.size() + 1] << '\n';
+					
+					m[j] = pattern.size();
+					j += succesShift.Get();
+					
+					break;
+				}
+				
+				if (text[h] == pattern[i] && i > 0)
+				{
+					--i;
+					--h;
+					
+					continue;
+				}
+				
+				if (text[h] != pattern[i])
+				{
+					m[j] = j - h;
+					
+					j += std::max(goodSuffix.Get(i), symbolTable.Get(text[h], i));
+					
+					break;
+				}
+			}
+			
+			if (m[h] < nFunction[i])
+			{
+				i -= m[h];
+				h -= m[h];
+				
+				continue;
+			}
+			
+			if (m[h] >= nFunction[i] && nFunction[i] >= i)
+			{
+				std::cout << positions[j - pattern.size() + 1] << '\n';
+				
+				m[j] = j - h;
+				j += succesShift.Get();
+				
+				break;
+			}
+			
+			if (m[h] > nFunction[i] && nFunction[i] < i)
+			{
+				m[j] = j - h;
+				j += std::max(goodSuffix.Get(i - nFunction[i]), symbolTable.Get(text[h - nFunction[i]], i - nFunction[i]));
+				
+				break;
+			}
+			
+			if (m[h] == nFunction[i] && nFunction[i] > 0 && nFunction[i] < (int)i)
+			{
+				i -= m[h];
+				h -= m[h];
+				
+				continue;
+			}
+		}
+	}
+
+	
+\end{lstlisting}
+
+
+
+\section{Консоль}
+\begin{alltt}
+[axr@pekarnya contest]$ g++ -Wall -o ag ApostolicoGiancarlo.cpp
+[axr@pekarnya contest]$ ./ag
+11 45 11 45 90
+0011 45 011 0045 11 45 90    11
+45 11 45 90
+1, 3
+1, 8
+[axr@pekarnya contest]$ 
+\end{alltt}
+\pagebreak
+

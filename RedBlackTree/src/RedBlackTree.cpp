@@ -172,7 +172,7 @@ TNode* TRedBlackTree::Erase(TNode* node)
     if (!node->parent && !node->left && !node->right)
     {
         delete node;
-        std::cout << "OK" << std::endl;
+//        std::cout << "OK" << std::endl;
         
         this->root = nullptr;
         return root;
@@ -195,7 +195,7 @@ TNode* TRedBlackTree::Erase(TNode* node)
             }
 
             delete node;
-            std::cout << "OK" << std::endl;
+//            std::cout << "OK" << std::endl;
         
             return root;
         } 
@@ -236,7 +236,7 @@ TNode* TRedBlackTree::Erase(TNode* node)
             
             delete node;
             
-            std::cout << "OK" << std::endl;
+//            std::cout << "OK" << std::endl;
             return root;
         } 
         else if (node->right && node->right->colour && !node->left)
@@ -259,7 +259,7 @@ TNode* TRedBlackTree::Erase(TNode* node)
         
             delete node;
         
-            std::cout << "OK" << std::endl;
+//            std::cout << "OK" << std::endl;
             return root;
         }
         else if (!node->right && !node->left)
@@ -278,7 +278,7 @@ TNode* TRedBlackTree::Erase(TNode* node)
             
             delete node;
             
-            std::cout << "OK" << std::endl;
+//            std::cout << "OK" << std::endl;
             return root;
         }
         else
