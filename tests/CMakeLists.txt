@@ -12,13 +12,12 @@ target_link_libraries(GTest::GTest INTERFACE gtest_main)
 
 
 
+file(GLOB_RECURSE RBTreeIncludes ../RedBlackTree/include/*.hpp)
+file(GLOB_RECURSE RBTreeSources ../RedBlackTree/src/*.cpp)
+
 add_executable(RBTreeTest RBTreeTest.cpp
     include/GenerationUtils.hpp src/GenerationUtils.cpp
-    ../RedBlackTree/include/FileManager.hpp ../RedBlackTree/src/FileManager.cpp
-    ../RedBlackTree/include/Formatter.hpp ../RedBlackTree/src/Formatter.cpp
-    ../RedBlackTree/include/Item.hpp ../RedBlackTree/src/Item.cpp
-    ../RedBlackTree/include/Node.hpp ../RedBlackTree/src/Node.cpp
-    ../RedBlackTree/include/RedBlackTree.hpp ../RedBlackTree/src/RedBlackTree.cpp
+    ${RBTreeIncludes} ${RBTreeSources}    
 )
 
 target_link_libraries(RBTreeTest PRIVATE GTest::GTest)
@@ -28,15 +27,18 @@ target_include_directories(RBTreeTest PRIVATE ../RedBlackTree/include)
 add_test(RBTreeTest RBTreeTest)
 
 
-add_executable(RBTreeTest RBTreeTest.cpp
+
+file(GLOB_RECURSE AGIncludes ../Apostolico-Giancarlo/include/*.hpp)
+file(GLOB_RECURSE AGSources ../Apostolico-Giancarlo/src/*.cpp)
+
+add_executable(AGTest AGTest.cpp
     include/GenerationUtils.hpp src/GenerationUtils.cpp
-    ../Apostolico-Giancarlo/include/AGSearch.hpp ../Apostolico-Giancarlo/src/AGSearch.cpp
+    ${AGIncludes} ${AGSources} 
 )
 
-target_link_libraries(RBTreeTest PRIVATE GTest::GTest)
-target_include_directories(RBTreeTest PRIVATE include)
-target_include_directories(RBTreeTest PRIVATE ../RedBlackTree/include)
+target_link_libraries(AGTest PRIVATE GTest::GTest)
+target_include_directories(AGTest PRIVATE include)
+target_include_directories(AGTest PRIVATE ../Apostolico-Giancarlo/include)
 
-add_test(RBTreeTest RBTreeTest)
-
+add_test(AGTest AGTest)
 

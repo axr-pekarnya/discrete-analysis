@@ -10,6 +10,7 @@ cd ${tmp_dir}
 cmake ${main_dir}
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ${main_dir}
 cmake --build . --target RBTreeTest
+cmake --build . --target AGTest
 ctest -V
 
 mv compile_commands.json ${main_dir}

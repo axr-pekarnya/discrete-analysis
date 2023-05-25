@@ -42,6 +42,72 @@
   "output": "tests/CMakeFiles/RBTreeTest.dir/__/RedBlackTree/src/RedBlackTree.cpp.o"
 },
 {
+  "directory": "/home/axr/prog/discrete-analysis/.build/tests",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/tests/include -I/home/axr/prog/discrete-analysis/tests/../Apostolico-Giancarlo/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest -Wall -Wextra -pedantic -Werror -o CMakeFiles/AGTest.dir/AGTest.cpp.o -c /home/axr/prog/discrete-analysis/tests/AGTest.cpp",
+  "file": "/home/axr/prog/discrete-analysis/tests/AGTest.cpp",
+  "output": "tests/CMakeFiles/AGTest.dir/AGTest.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/tests",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/tests/include -I/home/axr/prog/discrete-analysis/tests/../Apostolico-Giancarlo/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest -Wall -Wextra -pedantic -Werror -o CMakeFiles/AGTest.dir/src/GenerationUtils.cpp.o -c /home/axr/prog/discrete-analysis/tests/src/GenerationUtils.cpp",
+  "file": "/home/axr/prog/discrete-analysis/tests/src/GenerationUtils.cpp",
+  "output": "tests/CMakeFiles/AGTest.dir/src/GenerationUtils.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/tests",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/tests/include -I/home/axr/prog/discrete-analysis/tests/../Apostolico-Giancarlo/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest -Wall -Wextra -pedantic -Werror -o CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/AGSearch.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/AGSearch.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/AGSearch.cpp",
+  "output": "tests/CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/AGSearch.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/tests",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/tests/include -I/home/axr/prog/discrete-analysis/tests/../Apostolico-Giancarlo/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest -Wall -Wextra -pedantic -Werror -o CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/GoodSuffix.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/GoodSuffix.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/GoodSuffix.cpp",
+  "output": "tests/CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/GoodSuffix.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/tests",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/tests/include -I/home/axr/prog/discrete-analysis/tests/../Apostolico-Giancarlo/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest -Wall -Wextra -pedantic -Werror -o CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/LFunction.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/LFunction.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/LFunction.cpp",
+  "output": "tests/CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/LFunction.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/tests",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/tests/include -I/home/axr/prog/discrete-analysis/tests/../Apostolico-Giancarlo/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest -Wall -Wextra -pedantic -Werror -o CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/LsFunction.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/LsFunction.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/LsFunction.cpp",
+  "output": "tests/CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/LsFunction.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/tests",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/tests/include -I/home/axr/prog/discrete-analysis/tests/../Apostolico-Giancarlo/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest -Wall -Wextra -pedantic -Werror -o CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/NFunction.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/NFunction.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/NFunction.cpp",
+  "output": "tests/CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/NFunction.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/tests",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/tests/include -I/home/axr/prog/discrete-analysis/tests/../Apostolico-Giancarlo/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest -Wall -Wextra -pedantic -Werror -o CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/ParsingUtils.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/ParsingUtils.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/ParsingUtils.cpp",
+  "output": "tests/CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/ParsingUtils.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/tests",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/tests/include -I/home/axr/prog/discrete-analysis/tests/../Apostolico-Giancarlo/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest -Wall -Wextra -pedantic -Werror -o CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/SuccesfullShift.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/SuccesfullShift.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/SuccesfullShift.cpp",
+  "output": "tests/CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/SuccesfullShift.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/tests",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/tests/include -I/home/axr/prog/discrete-analysis/tests/../Apostolico-Giancarlo/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest -Wall -Wextra -pedantic -Werror -o CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/SymbolTable.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/SymbolTable.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/SymbolTable.cpp",
+  "output": "tests/CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/SymbolTable.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/tests",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/tests/include -I/home/axr/prog/discrete-analysis/tests/../Apostolico-Giancarlo/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest -Wall -Wextra -pedantic -Werror -o CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/ZFunction.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/ZFunction.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/ZFunction.cpp",
+  "output": "tests/CMakeFiles/AGTest.dir/__/Apostolico-Giancarlo/src/ZFunction.cpp.o"
+},
+{
   "directory": "/home/axr/prog/discrete-analysis/.build/_deps/googletest-build/googlemock",
   "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googlemock/include -I/home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googlemock -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest/include -isystem /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googletest -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -Wall -Wextra -pedantic -Werror -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googlemock/src/gmock-all.cc",
   "file": "/home/axr/prog/discrete-analysis/.build/_deps/googletest-src/googlemock/src/gmock-all.cc",
@@ -100,5 +166,65 @@
   "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/RedBlackTree/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/RBTree.dir/src/RedBlackTree.cpp.o -c /home/axr/prog/discrete-analysis/RedBlackTree/src/RedBlackTree.cpp",
   "file": "/home/axr/prog/discrete-analysis/RedBlackTree/src/RedBlackTree.cpp",
   "output": "RedBlackTree/CMakeFiles/RBTree.dir/src/RedBlackTree.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/Apostolico-Giancarlo",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/main.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/main.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/main.cpp",
+  "output": "Apostolico-Giancarlo/CMakeFiles/main.dir/main.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/Apostolico-Giancarlo",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/ZFunction.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/ZFunction.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/ZFunction.cpp",
+  "output": "Apostolico-Giancarlo/CMakeFiles/main.dir/src/ZFunction.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/Apostolico-Giancarlo",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/NFunction.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/NFunction.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/NFunction.cpp",
+  "output": "Apostolico-Giancarlo/CMakeFiles/main.dir/src/NFunction.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/Apostolico-Giancarlo",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/LFunction.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/LFunction.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/LFunction.cpp",
+  "output": "Apostolico-Giancarlo/CMakeFiles/main.dir/src/LFunction.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/Apostolico-Giancarlo",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/LsFunction.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/LsFunction.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/LsFunction.cpp",
+  "output": "Apostolico-Giancarlo/CMakeFiles/main.dir/src/LsFunction.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/Apostolico-Giancarlo",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/GoodSuffix.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/GoodSuffix.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/GoodSuffix.cpp",
+  "output": "Apostolico-Giancarlo/CMakeFiles/main.dir/src/GoodSuffix.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/Apostolico-Giancarlo",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/SymbolTable.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/SymbolTable.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/SymbolTable.cpp",
+  "output": "Apostolico-Giancarlo/CMakeFiles/main.dir/src/SymbolTable.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/Apostolico-Giancarlo",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/SuccesfullShift.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/SuccesfullShift.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/SuccesfullShift.cpp",
+  "output": "Apostolico-Giancarlo/CMakeFiles/main.dir/src/SuccesfullShift.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/Apostolico-Giancarlo",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/ParsingUtils.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/ParsingUtils.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/ParsingUtils.cpp",
+  "output": "Apostolico-Giancarlo/CMakeFiles/main.dir/src/ParsingUtils.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/.build/Apostolico-Giancarlo",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/main.dir/src/AGSearch.cpp.o -c /home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/AGSearch.cpp",
+  "file": "/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/src/AGSearch.cpp",
+  "output": "Apostolico-Giancarlo/CMakeFiles/main.dir/src/AGSearch.cpp.o"
 }
 ]

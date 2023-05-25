@@ -1,4 +1,0 @@
-/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/.build/CMakeFiles/main.dir
-/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/.build/CMakeFiles/test.dir
-/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/.build/CMakeFiles/edit_cache.dir
-/home/axr/prog/discrete-analysis/Apostolico-Giancarlo/.build/CMakeFiles/rebuild_cache.dir
