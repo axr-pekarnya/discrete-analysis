@@ -19,7 +19,6 @@ add_executable(RBTreeTest RBTreeTest.cpp
     ../RedBlackTree/include/Item.hpp ../RedBlackTree/src/Item.cpp
     ../RedBlackTree/include/Node.hpp ../RedBlackTree/src/Node.cpp
     ../RedBlackTree/include/RedBlackTree.hpp ../RedBlackTree/src/RedBlackTree.cpp
-
 )
 
 target_link_libraries(RBTreeTest PRIVATE GTest::GTest)
@@ -27,4 +26,17 @@ target_include_directories(RBTreeTest PRIVATE include)
 target_include_directories(RBTreeTest PRIVATE ../RedBlackTree/include)
 
 add_test(RBTreeTest RBTreeTest)
+
+
+add_executable(RBTreeTest RBTreeTest.cpp
+    include/GenerationUtils.hpp src/GenerationUtils.cpp
+    ../Apostolico-Giancarlo/include/AGSearch.hpp ../Apostolico-Giancarlo/src/AGSearch.cpp
+)
+
+target_link_libraries(RBTreeTest PRIVATE GTest::GTest)
+target_include_directories(RBTreeTest PRIVATE include)
+target_include_directories(RBTreeTest PRIVATE ../RedBlackTree/include)
+
+add_test(RBTreeTest RBTreeTest)
+
 
