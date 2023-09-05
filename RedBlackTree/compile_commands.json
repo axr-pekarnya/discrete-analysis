@@ -1,0 +1,80 @@
+[
+{
+  "directory": "/home/axr/prog/discrete-analysis/RedBlackTree/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/RedBlackTree/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/RBTree.dir/main.cpp.o -c /home/axr/prog/discrete-analysis/RedBlackTree/main.cpp",
+  "file": "/home/axr/prog/discrete-analysis/RedBlackTree/main.cpp",
+  "output": "CMakeFiles/RBTree.dir/main.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/RedBlackTree/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/RedBlackTree/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/RBTree.dir/src/FileManager.cpp.o -c /home/axr/prog/discrete-analysis/RedBlackTree/src/FileManager.cpp",
+  "file": "/home/axr/prog/discrete-analysis/RedBlackTree/src/FileManager.cpp",
+  "output": "CMakeFiles/RBTree.dir/src/FileManager.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/RedBlackTree/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/RedBlackTree/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/RBTree.dir/src/Formatter.cpp.o -c /home/axr/prog/discrete-analysis/RedBlackTree/src/Formatter.cpp",
+  "file": "/home/axr/prog/discrete-analysis/RedBlackTree/src/Formatter.cpp",
+  "output": "CMakeFiles/RBTree.dir/src/Formatter.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/RedBlackTree/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/RedBlackTree/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/RBTree.dir/src/Item.cpp.o -c /home/axr/prog/discrete-analysis/RedBlackTree/src/Item.cpp",
+  "file": "/home/axr/prog/discrete-analysis/RedBlackTree/src/Item.cpp",
+  "output": "CMakeFiles/RBTree.dir/src/Item.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/RedBlackTree/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/RedBlackTree/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/RBTree.dir/src/Node.cpp.o -c /home/axr/prog/discrete-analysis/RedBlackTree/src/Node.cpp",
+  "file": "/home/axr/prog/discrete-analysis/RedBlackTree/src/Node.cpp",
+  "output": "CMakeFiles/RBTree.dir/src/Node.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/RedBlackTree/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/RedBlackTree/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/RBTree.dir/src/RedBlackTree.cpp.o -c /home/axr/prog/discrete-analysis/RedBlackTree/src/RedBlackTree.cpp",
+  "file": "/home/axr/prog/discrete-analysis/RedBlackTree/src/RedBlackTree.cpp",
+  "output": "CMakeFiles/RBTree.dir/src/RedBlackTree.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/RedBlackTree/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/RedBlackTree/include -I/home/axr/prog/discrete-analysis/RedBlackTree/../TestUtils/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/tests.dir/tests.cpp.o -c /home/axr/prog/discrete-analysis/RedBlackTree/tests.cpp",
+  "file": "/home/axr/prog/discrete-analysis/RedBlackTree/tests.cpp",
+  "output": "CMakeFiles/tests.dir/tests.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/RedBlackTree/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/RedBlackTree/include -I/home/axr/prog/discrete-analysis/RedBlackTree/../TestUtils/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/tests.dir/home/axr/prog/discrete-analysis/TestUtils/src/GenerationUtils.cpp.o -c /home/axr/prog/discrete-analysis/TestUtils/src/GenerationUtils.cpp",
+  "file": "/home/axr/prog/discrete-analysis/TestUtils/src/GenerationUtils.cpp",
+  "output": "CMakeFiles/tests.dir/home/axr/prog/discrete-analysis/TestUtils/src/GenerationUtils.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/RedBlackTree/.build",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/RedBlackTree/include -I/home/axr/prog/discrete-analysis/RedBlackTree/../TestUtils/include -Wall -Wextra -pedantic -Werror -o CMakeFiles/tests.dir/src/RedBlackTree.cpp.o -c /home/axr/prog/discrete-analysis/RedBlackTree/src/RedBlackTree.cpp",
+  "file": "/home/axr/prog/discrete-analysis/RedBlackTree/src/RedBlackTree.cpp",
+  "output": "CMakeFiles/tests.dir/src/RedBlackTree.cpp.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-build/googlemock",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googlemock/include -I/home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googlemock -isystem /home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googletest/include -isystem /home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googletest -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "file": "/home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-build/googlemock",
+  "command": "/usr/bin/c++  -isystem /home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googlemock/include -isystem /home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googlemock -isystem /home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googletest/include -isystem /home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googletest -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "file": "/home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-build/googletest",
+  "command": "/usr/bin/c++  -I/home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googletest/include -I/home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googletest -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "file": "/home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
+},
+{
+  "directory": "/home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-build/googletest",
+  "command": "/usr/bin/c++  -isystem /home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googletest/include -isystem /home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googletest -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "file": "/home/axr/prog/discrete-analysis/RedBlackTree/.build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
+}
+]
