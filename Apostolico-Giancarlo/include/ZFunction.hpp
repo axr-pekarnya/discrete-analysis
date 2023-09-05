@@ -5,7 +5,7 @@
 #include <string>
 #include <algorithm>
 
-std::vector<int> ZFunction(std::vector<uint> &str); 
+std::vector<int> ZFunction(std::vector<uint32_t> &str); 
 
 #endif
 

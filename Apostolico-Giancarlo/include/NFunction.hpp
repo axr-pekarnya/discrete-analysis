@@ -3,7 +3,7 @@
 
 #include "ZFunction.hpp"
 
-std::vector<int> NFunction(std::vector<uint> str);
+std::vector<int> NFunction(std::vector<uint32_t>& str);
 
 #endif
 

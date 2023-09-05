@@ -19,6 +19,9 @@ add_executable(main main.cpp
     src/LsFunction.cpp include/LsFunction.hpp
     src/GoodSuffix.cpp include/GoodSuffix.hpp
     src/SymbolTable.cpp include/SymbolTable.hpp
+    src/SuccesfullShift.cpp include/SuccesfullShift.hpp
+    src/ParsingUtils.cpp include/ParsingUtils.hpp
+    src/AGSearch.cpp include/AGSearch.hpp
 )
 
 target_include_directories(main PRIVATE include)
