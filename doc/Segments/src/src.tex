@@ -1,0 +1,216 @@
+\section{Описание}
+
+Жадные алгоритмы предназначены для решения задач оптимизации.
+Они обычно представляют собой последовательность шагов, на каждом из которых
+предоставляется некоторое множестов выборов. В жадном алгоритме всегда делается
+выбор, который кажется самым лучшим в данный момент, т.е. проводится локально
+оптимальный выбор в надежде, что он приведет к оптимальному решению глобальой
+задачи. Важно отметить, что жадные алгоритмы не всегда приводят к оптимальным
+решениям, но во многих задачах дают нужный результат.
+
+\par
+
+Применим жадный алгортим к задаче выбора отрезков. Сохраним наши пары границ
+отрезков в массив данных и отсортируем их по правой границе, т.е. при обращении
+к данному массиву в начале будут лежать отрезки, которые заканчиваются правее
+всех. Также при сохранении отрезков запомним их изначальный индекс для того
+чтобы, при выводе восстановить исходный порядок.
+
+\par
+
+Теперь будем считать, что в точке 0, т.е. в начале покрываемого интервала, лежит
+грань, котрорую мы будем двигать по мере того, как будет происходить покрытие
+интервала. Эта грань будет означать самую правую точку покрытой части (в начале
+это точка 0). Пока эта точка не станет $\geq M$, мы будем считать наш интервал
+непокрытым.
+
+\par
+
+Затем будем в цикле проходиться по нашему отсортированному масиву и брать первый отрезок, левая граница которого лежит левее или равна текущей грани, а правая
+граница лежит обязательно правее текущей грани. Это необходимые условия, т.к. мы
+ищем минимальное число отрезков, иначе есть шанс взять отрезки, котрые не подвинут нашу грань. Если же на каком-то этапе прохода мы не нашли такого отрезка, это
+говорит о том, что мы не пожем покрыть наш интервал данной выборкой отрезков.
+
+\par 
+
+Подходящие же отрезки будем сохранять в новый массив, который в случае порытия
+интервала отсортируем по изначальному индексу и выведем в качестве ответа.
+Докажем верность данного алгоритма. Благодаря тому, что на каждом шаге мы
+берем отрезок с самой правой границей, то это будет гаратировать минимальность
+количества выбранных отрезков. Здесь важно отметить, что жадные алгоритмы да-
+ют нам лишь одно оптимальное решение, которых может быть несколько. Следо-
+вательно, допустим, что мы имеем оптимальное решение задачи выбора отрезков и
+на каком-то этапе мы решаем добавить наш отрезок в это решение. У нас есть два
+варианта:
+
+\begin{itemize}
+	\item Этот отрезок лежит в этом решении, тогда все ок, просто перейдем к следующй
+	подзадаче;
+	\item Этот отрезок не лежит в этом решении, но т.к. согласно нашему алгоритму на дан-
+	ном этапе мы добавляем отрезок с самой правой границей, то он сдвинет грань еще
+	дальше и обязательно будет иметь пересечние со следующим отрезком в оптималь-
+	ном решении, значит мы можем просто исключить отрезок лежащий в оптимальном решении на выбраннный.
+\end{itemize}
+
+\section{Исходный код}
+
+\vspace{\baselineskip}
+
+\begin{lstlisting}[language=C++]
+#include <bits/stdc++.h>
+
+class TSegment {
+	public:
+	TSegment(int left, int right, int idx){
+		this->left = left;
+		this->right = right;
+		this->idx = idx;
+	}
+	TSegment() = default;
+	
+	int GetLeft() const {
+		return this->left;
+	}
+	
+	int GetRight() const {
+		return this->right;
+	}
+	
+	int GetIdx() const {
+		return this->idx;
+	}
+	
+	void SetLeft(int value){
+		this->left = value;
+	}
+	
+	void SetRight(int value){
+		this->right = value;
+	}
+	
+	void SetIdx(int value){
+		this->idx = value;
+	}
+	
+	private:
+	int left;
+	int right;
+	int idx;
+	
+	protected:
+	
+};
+
+using psb = std::pair<std::vector<TSegment>, bool>;
+
+bool operator<(TSegment const &seg1, TSegment const &seg2){
+	return seg1.GetIdx() < seg2.GetIdx();
+}
+
+bool Select(std::vector<TSegment> &data, int m, std::vector<TSegment> &result) 
+{
+	TSegment curSegment(-1, -1, -1);
+	
+	for (TSegment &segment : data) {
+		if (segment.GetRight() <= result.back().GetRight()) {
+			continue;
+		}
+		
+		if (segment.GetLeft() <= result.back().GetRight()) 
+		{
+			if (curSegment.GetRight() < segment.GetRight()) 
+			{
+				curSegment = segment;
+				
+				if (m <= curSegment.GetRight()) 
+				{
+					result.push_back(curSegment);
+					return true;
+				}
+			}
+		}
+		else 
+		{
+			if (segment.GetLeft() <= curSegment.GetRight()) 
+			{
+				result.push_back(curSegment);
+				curSegment = segment;
+				
+				if (m <= curSegment.GetRight())
+				{
+					result.push_back(curSegment);
+					return true; 
+				}
+			}
+			else {
+				return false;
+			}
+		}
+	}
+	
+	return false;
+}
+
+std::istream& operator >> (std::istream& in, std::vector<TSegment> &data) {
+	for (int i = 0; i < (int)data.size(); ++i)
+	{
+		data[i].SetIdx(i);
+		
+		int left, right;
+		in >> left >> right;
+		
+		data[i].SetLeft(left);
+		data[i].SetRight(right);
+	}
+	
+	return in;
+}
+
+bool Comparator(const TSegment &a, const TSegment &b) 
+{
+	int aLeft = a.GetLeft();
+	int aRight = a.GetRight();
+	int aIdx = a.GetIdx();
+	
+	int bLeft = b.GetLeft();
+	int bRight = b.GetRight();
+	int bIdx = b.GetIdx();
+	
+	return std::tie(aLeft, aRight, aIdx) < std::tie(bLeft, bRight, bIdx);
+}
+
+int main() 
+{
+	int n, m;
+	std::cin >> n;
+	
+	std::vector<TSegment> data(n);
+	
+	std::cin >> data;
+	std::cin >> m;
+	
+	std::sort(data.begin(), data.end(), Comparator);
+	
+	std::vector<TSegment> resData = {{-1, 0, -1}};
+	bool found = Select(data, m, resData);
+	
+	std::sort(resData.begin(), resData.end());
+	
+	if (found) {
+		std::cout << resData.size() - 1 << '\n';
+		
+		for (int i = 1; i < (int)resData.size(); ++i){
+			std::cout << resData[i].GetLeft() << ' ' << resData[i].GetRight() << '\n';
+		}
+	} 
+	else {
+		std::cout << "0\n";
+	}
+	
+	return 0;
+}
+
+\end{lstlisting}
+
+\pagebreak
+
