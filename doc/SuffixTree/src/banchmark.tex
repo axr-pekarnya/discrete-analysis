@@ -1,0 +1,26 @@
+\section{Тест производительности}
+
+В качестве тестирующего инструмента были выбраны гугл-тесты, интегрированные в программу при помощи CMake. Были применены методы <<table-driven tests>> и <<fuzzy-test>>, ниже приведены табличные тестовые случаи.
+
+\begin{center}
+	
+	\begin{tabular}{| c | c |}
+		\hline
+		Ввод & Вывод \\
+		\hline
+		abacaba bacabac & 6 bacaba \\
+		\hline
+		abacaba b & 1 b \\
+		\hline
+		abacaba cbc & 1 b c \\
+		\hline
+		axerbxerx xerx & 4 xerx \\
+		\hline
+		abacaba rerroro & 0 \\
+		\hline
+	\end{tabular}
+
+\end{center}
+
+\pagebreak
+
